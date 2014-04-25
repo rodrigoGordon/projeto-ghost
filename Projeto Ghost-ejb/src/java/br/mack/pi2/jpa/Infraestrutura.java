@@ -7,45 +7,52 @@
 package br.mack.pi2.jpa;
 
 import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  *
  * @author MichelOh
  */
-@Entity
+@Entity (name = "infraestrutura")
 public class Infraestrutura implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    @Column (name = "idEstrutura")
+    private int idEstrutura;
+    
+    @Column (name = "nomeEstrutura", length = 50)
+    private String nomeEstrutura;
+    @Column (name = "descEstrutura", length = 100)
+    private String descEstrutura;
+    @Column (name = "tipoEstrutura")
+    private int tipoEstrutura;
+    @Column (name = "valor")
+    private float valor;
 
-    public int getId() {
-        return id;
+    public int getIdEstrutura() {
+        return idEstrutura;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdEstrutura(int idEstrutura) {
+        this.idEstrutura = idEstrutura;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (int) id;
+        hash += (int) idEstrutura;
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
+        // TODO: Warning - this method won't work in the case the idEstrutura fields are not set
         if (!(object instanceof Infraestrutura)) {
             return false;
         }
         Infraestrutura other = (Infraestrutura) object;
-        if (this.id != other.id) {
+        if (this.idEstrutura != other.idEstrutura) {
             return false;
         }
         return true;
@@ -53,7 +60,63 @@ public class Infraestrutura implements Serializable {
 
     @Override
     public String toString() {
-        return "br.mack.pi2.jpa.Infraestrutura[ id=" + id + " ]";
+        return "br.mack.pi2.jpa.Infraestrutura[ id=" + idEstrutura + " ]";
+    }
+
+    /**
+     * @return the nomeEstrutura
+     */
+    public String getNomeEstrutura() {
+        return nomeEstrutura;
+    }
+
+    /**
+     * @param nomeEstrutura the nomeEstrutura to set
+     */
+    public void setNomeEstrutura(String nomeEstrutura) {
+        this.nomeEstrutura = nomeEstrutura;
+    }
+
+    /**
+     * @return the descEstrutura
+     */
+    public String getDescEstrutura() {
+        return descEstrutura;
+    }
+
+    /**
+     * @param descEstrutura the descEstrutura to set
+     */
+    public void setDescEstrutura(String descEstrutura) {
+        this.descEstrutura = descEstrutura;
+    }
+
+    /**
+     * @return the tipoEstrutura
+     */
+    public int getTipoEstrutura() {
+        return tipoEstrutura;
+    }
+
+    /**
+     * @param tipoEstrutura the tipoEstrutura to set
+     */
+    public void setTipoEstrutura(int tipoEstrutura) {
+        this.tipoEstrutura = tipoEstrutura;
+    }
+
+    /**
+     * @return the valor
+     */
+    public float getValor() {
+        return valor;
+    }
+
+    /**
+     * @param valor the valor to set
+     */
+    public void setValor(float valor) {
+        this.valor = valor;
     }
     
 }

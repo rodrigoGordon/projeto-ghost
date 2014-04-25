@@ -7,21 +7,22 @@
 package br.mack.pi2.jpa;
 
 import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  *
  * @author MichelOh
  */
-@Entity
+@Entity (name = "permissao")
 public class Permissao implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column (name = "tipo_user")
     private int id;
+    
+    @Column (name = "desc_user", length = 20)
+    private String descUser;
 
     public int getId() {
         return id;
@@ -54,6 +55,20 @@ public class Permissao implements Serializable {
     @Override
     public String toString() {
         return "br.mack.pi2.jpa.Permissao[ id=" + id + " ]";
+    }
+
+    /**
+     * @return the descUser
+     */
+    public String getDescUser() {
+        return descUser;
+    }
+
+    /**
+     * @param descUser the descUser to set
+     */
+    public void setDescUser(String descUser) {
+        this.descUser = descUser;
     }
     
 }
