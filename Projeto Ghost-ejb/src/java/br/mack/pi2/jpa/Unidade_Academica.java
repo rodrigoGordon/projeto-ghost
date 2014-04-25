@@ -45,6 +45,14 @@ public class Unidade_Academica implements Serializable {
         this.aluno = aluno;
     }
 
+    public String getNome_UA() {
+        return nome_UA;
+    }
+
+    public void setNome_UA(String nome_UA) {
+        this.nome_UA = nome_UA;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;
