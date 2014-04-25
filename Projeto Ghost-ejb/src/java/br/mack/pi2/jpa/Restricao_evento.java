@@ -19,31 +19,31 @@ public class Restricao_evento implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column (name = "idRestricao_Evento")
-    private int id;
+    private int idRestricaoEvento;
 
-    public int getId() {
-        return id;
+    public int getIdRestricaoEvento() {
+        return idRestricaoEvento;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdRestricaoEvento(int idRestricaoEvento) {
+        this.idRestricaoEvento = idRestricaoEvento;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (int) id;
+        hash += (int) idRestricaoEvento;
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
+        // TODO: Warning - this method won't work in the case the idRestricaoEvento fields are not set
         if (!(object instanceof Restricao_evento)) {
             return false;
         }
         Restricao_evento other = (Restricao_evento) object;
-        if (this.id != other.id) {
+        if (this.idRestricaoEvento != other.idRestricaoEvento) {
             return false;
         }
         return true;
@@ -51,7 +51,7 @@ public class Restricao_evento implements Serializable {
 
     @Override
     public String toString() {
-        return "br.mack.pi2.jpa.Restricao_evento[ id=" + id + " ]";
+        return "br.mack.pi2.jpa.Restricao_evento[ id=" + idRestricaoEvento + " ]";
     }
     
 }

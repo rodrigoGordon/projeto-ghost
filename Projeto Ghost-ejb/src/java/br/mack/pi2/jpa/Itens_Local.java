@@ -19,7 +19,7 @@ public class Itens_Local implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column (name = "idItens_Local")
-    private int id;
+    private int idItensLocal;
     
     @Column (name = "nome_item", length = 50)
     private String nomeItem;
@@ -28,29 +28,29 @@ public class Itens_Local implements Serializable {
     @Column (name = "quantidade")
     private int qtd;
 
-    public int getId() {
-        return id;
+    public int getIdItensLocal() {
+        return idItensLocal;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdItensLocal(int idItensLocal) {
+        this.idItensLocal = idItensLocal;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (int) id;
+        hash += (int) idItensLocal;
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
+        // TODO: Warning - this method won't work in the case the idItensLocal fields are not set
         if (!(object instanceof Itens_Local)) {
             return false;
         }
         Itens_Local other = (Itens_Local) object;
-        if (this.id != other.id) {
+        if (this.idItensLocal != other.idItensLocal) {
             return false;
         }
         return true;
@@ -58,7 +58,49 @@ public class Itens_Local implements Serializable {
 
     @Override
     public String toString() {
-        return "br.mack.pi2.jpa.Itens_Local[ id=" + id + " ]";
+        return "br.mack.pi2.jpa.Itens_Local[ id=" + idItensLocal + " ]";
+    }
+
+    /**
+     * @return the nomeItem
+     */
+    public String getNomeItem() {
+        return nomeItem;
+    }
+
+    /**
+     * @param nomeItem the nomeItem to set
+     */
+    public void setNomeItem(String nomeItem) {
+        this.nomeItem = nomeItem;
+    }
+
+    /**
+     * @return the descItem
+     */
+    public String getDescItem() {
+        return descItem;
+    }
+
+    /**
+     * @param descItem the descItem to set
+     */
+    public void setDescItem(String descItem) {
+        this.descItem = descItem;
+    }
+
+    /**
+     * @return the qtd
+     */
+    public int getQtd() {
+        return qtd;
+    }
+
+    /**
+     * @param qtd the qtd to set
+     */
+    public void setQtd(int qtd) {
+        this.qtd = qtd;
     }
     
 }

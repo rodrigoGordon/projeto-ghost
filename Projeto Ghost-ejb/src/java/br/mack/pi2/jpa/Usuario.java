@@ -19,7 +19,7 @@ public class Usuario implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column (name = "idLogin")
-    private int id;
+    private int idLogin;
     
     @Column (name = "nomeUser", length = 10)
     private String nomeUser;
@@ -30,29 +30,29 @@ public class Usuario implements Serializable {
     @Column (name = "pass", length = 16)
     private int pass; //valor binario: colocar 0b no numero
 
-    public int getId() {
-        return id;
+    public int getIdLogin() {
+        return idLogin;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdLogin(int idLogin) {
+        this.idLogin = idLogin;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (int) id;
+        hash += (int) idLogin;
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
+        // TODO: Warning - this method won't work in the case the idLogin fields are not set
         if (!(object instanceof Usuario)) {
             return false;
         }
         Usuario other = (Usuario) object;
-        if (this.id != other.id) {
+        if (this.idLogin != other.idLogin) {
             return false;
         }
         return true;
@@ -60,7 +60,63 @@ public class Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "br.mack.pi2.jpa.Usuario[ id=" + id + " ]";
+        return "br.mack.pi2.jpa.Usuario[ id=" + idLogin + " ]";
+    }
+
+    /**
+     * @return the nomeUser
+     */
+    public String getNomeUser() {
+        return nomeUser;
+    }
+
+    /**
+     * @param nomeUser the nomeUser to set
+     */
+    public void setNomeUser(String nomeUser) {
+        this.nomeUser = nomeUser;
+    }
+
+    /**
+     * @return the email
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * @param email the email to set
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    /**
+     * @return the rg
+     */
+    public int getRg() {
+        return rg;
+    }
+
+    /**
+     * @param rg the rg to set
+     */
+    public void setRg(int rg) {
+        this.rg = rg;
+    }
+
+    /**
+     * @return the pass
+     */
+    public int getPass() {
+        return pass;
+    }
+
+    /**
+     * @param pass the pass to set
+     */
+    public void setPass(int pass) {
+        this.pass = pass;
     }
     
 }

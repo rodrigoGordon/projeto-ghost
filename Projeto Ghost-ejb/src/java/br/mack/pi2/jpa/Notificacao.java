@@ -20,7 +20,7 @@ public class Notificacao implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column (name = "idNotificacao")
-    private int id;
+    private int idNotificacao;
     
     @Column (name = "email", length = 100)
     private String email;
@@ -28,29 +28,29 @@ public class Notificacao implements Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dtNotificacao;
 
-    public int getId() {
-        return id;
+    public int getIdNotificacao() {
+        return idNotificacao;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdNotificacao(int idNotificacao) {
+        this.idNotificacao = idNotificacao;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (int) id;
+        hash += (int) idNotificacao;
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
+        // TODO: Warning - this method won't work in the case the idNotificacao fields are not set
         if (!(object instanceof Notificacao)) {
             return false;
         }
         Notificacao other = (Notificacao) object;
-        if (this.id != other.id) {
+        if (this.idNotificacao != other.idNotificacao) {
             return false;
         }
         return true;
@@ -58,7 +58,35 @@ public class Notificacao implements Serializable {
 
     @Override
     public String toString() {
-        return "br.mack.pi2.jpa.Notificacao[ id=" + id + " ]";
+        return "br.mack.pi2.jpa.Notificacao[ id=" + idNotificacao + " ]";
+    }
+
+    /**
+     * @return the email
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * @param email the email to set
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    /**
+     * @return the dtNotificacao
+     */
+    public Date getDtNotificacao() {
+        return dtNotificacao;
+    }
+
+    /**
+     * @param dtNotificacao the dtNotificacao to set
+     */
+    public void setDtNotificacao(Date dtNotificacao) {
+        this.dtNotificacao = dtNotificacao;
     }
     
 }

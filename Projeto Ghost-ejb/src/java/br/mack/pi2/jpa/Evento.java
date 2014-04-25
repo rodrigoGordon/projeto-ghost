@@ -20,7 +20,7 @@ public class Evento implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column (name = "idEvento")
-    private int id;
+    private int idEvento;
     
     @Column (name = "nomeEvento", length = 100)
     private String nomeEvento;
@@ -39,29 +39,29 @@ public class Evento implements Serializable {
     @Column (name = "isPrivado")
     private boolean privado;
     
-    public int getId() {
-        return id;
+    public int getIdEvento() {
+        return idEvento;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdEvento(int idEvento) {
+        this.idEvento = idEvento;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (int) id;
+        hash += (int) idEvento;
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
+        // TODO: Warning - this method won't work in the case the idEvento fields are not set
         if (!(object instanceof Evento)) {
             return false;
         }
         Evento other = (Evento) object;
-        if (this.id != other.id) {
+        if (this.idEvento != other.idEvento) {
             return false;
         }
         return true;
@@ -69,7 +69,105 @@ public class Evento implements Serializable {
 
     @Override
     public String toString() {
-        return "br.mack.pi2.jpa.Evento[ id=" + id + " ]";
+        return "br.mack.pi2.jpa.Evento[ id=" + idEvento + " ]";
+    }
+
+    /**
+     * @return the nomeEvento
+     */
+    public String getNomeEvento() {
+        return nomeEvento;
+    }
+
+    /**
+     * @param nomeEvento the nomeEvento to set
+     */
+    public void setNomeEvento(String nomeEvento) {
+        this.nomeEvento = nomeEvento;
+    }
+
+    /**
+     * @return the descEvento
+     */
+    public String getDescEvento() {
+        return descEvento;
+    }
+
+    /**
+     * @param descEvento the descEvento to set
+     */
+    public void setDescEvento(String descEvento) {
+        this.descEvento = descEvento;
+    }
+
+    /**
+     * @return the dtInicio
+     */
+    public Date getDtInicio() {
+        return dtInicio;
+    }
+
+    /**
+     * @param dtInicio the dtInicio to set
+     */
+    public void setDtInicio(Date dtInicio) {
+        this.dtInicio = dtInicio;
+    }
+
+    /**
+     * @return the dtFim
+     */
+    public Date getDtFim() {
+        return dtFim;
+    }
+
+    /**
+     * @param dtFim the dtFim to set
+     */
+    public void setDtFim(Date dtFim) {
+        this.dtFim = dtFim;
+    }
+
+    /**
+     * @return the itemAdd
+     */
+    public boolean isItemAdd() {
+        return itemAdd;
+    }
+
+    /**
+     * @param itemAdd the itemAdd to set
+     */
+    public void setItemAdd(boolean itemAdd) {
+        this.itemAdd = itemAdd;
+    }
+
+    /**
+     * @return the inscricao
+     */
+    public boolean isInscricao() {
+        return inscricao;
+    }
+
+    /**
+     * @param inscricao the inscricao to set
+     */
+    public void setInscricao(boolean inscricao) {
+        this.inscricao = inscricao;
+    }
+
+    /**
+     * @return the privado
+     */
+    public boolean isPrivado() {
+        return privado;
+    }
+
+    /**
+     * @param privado the privado to set
+     */
+    public void setPrivado(boolean privado) {
+        this.privado = privado;
     }
     
 }

@@ -55,5 +55,19 @@ public class Itens_de_infra implements Serializable {
     public String toString() {
         return "br.mack.pi2.jpa.Itens_de_infra[ id=" + id + " ]";
     }
+
+    /**
+     * @return the qtd
+     */
+    public int getQtd() {
+        return qtd;
+    }
+
+    /**
+     * @param qtd the qtd to set
+     */
+    public void setQtd(int qtd) {
+        this.qtd = qtd;
+    }
     
 }

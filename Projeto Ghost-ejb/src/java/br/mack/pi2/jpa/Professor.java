@@ -18,36 +18,36 @@ public class Professor implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Column (name = "drt")
-    private int id;
+    private int drt;
     
     @Column (name = "nomeProf", length = 100)
     private String nomeProf;
     @Column (name = "tipo_prof", length = 3)
     private String tipoProf;
 
-    public int getId() {
-        return id;
+    public int getDrt() {
+        return drt;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setDrt(int drt) {
+        this.drt = drt;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (int) id;
+        hash += (int) drt;
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
+        // TODO: Warning - this method won't work in the case the drt fields are not set
         if (!(object instanceof Professor)) {
             return false;
         }
         Professor other = (Professor) object;
-        if (this.id != other.id) {
+        if (this.drt != other.drt) {
             return false;
         }
         return true;
@@ -55,7 +55,35 @@ public class Professor implements Serializable {
 
     @Override
     public String toString() {
-        return "br.mack.pi2.jpa.Professor[ id=" + id + " ]";
+        return "br.mack.pi2.jpa.Professor[ id=" + drt + " ]";
+    }
+
+    /**
+     * @return the nomeProf
+     */
+    public String getNomeProf() {
+        return nomeProf;
+    }
+
+    /**
+     * @param nomeProf the nomeProf to set
+     */
+    public void setNomeProf(String nomeProf) {
+        this.nomeProf = nomeProf;
+    }
+
+    /**
+     * @return the tipoProf
+     */
+    public String getTipoProf() {
+        return tipoProf;
+    }
+
+    /**
+     * @param tipoProf the tipoProf to set
+     */
+    public void setTipoProf(String tipoProf) {
+        this.tipoProf = tipoProf;
     }
     
 }
