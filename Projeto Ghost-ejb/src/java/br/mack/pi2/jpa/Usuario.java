@@ -7,21 +7,28 @@
 package br.mack.pi2.jpa;
 
 import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  *
  * @author MichelOh
  */
-@Entity
+@Entity (name = "usuario")
 public class Usuario implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column (name = "idLogin")
     private int id;
+    
+    @Column (name = "nomeUser", length = 10)
+    private String nomeUser;
+    @Column (name = "email", length = 100)
+    private String email;
+    @Column (name = "rg")
+    private int rg;
+    @Column (name = "pass", length = 16)
+    private int pass; //valor binario: colocar 0b no numero
 
     public int getId() {
         return id;

@@ -7,21 +7,23 @@
 package br.mack.pi2.jpa;
 
 import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  *
  * @author MichelOh
  */
-@Entity
+@Entity (name = "professor")
 public class Professor implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column (name = "drt")
     private int id;
+    
+    @Column (name = "nomeProf", length = 100)
+    private String nomeProf;
+    @Column (name = "tipo_prof", length = 3)
+    private String tipoProf;
 
     public int getId() {
         return id;

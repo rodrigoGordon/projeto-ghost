@@ -7,21 +7,26 @@
 package br.mack.pi2.jpa;
 
 import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  *
  * @author MichelOh
  */
-@Entity
+@Entity (name = "itens_local")
 public class Itens_Local implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column (name = "idItens_Local")
     private int id;
+    
+    @Column (name = "nome_item", length = 50)
+    private String nomeItem;
+    @Column (name = "desc_item", length = 100)
+    private String descItem;
+    @Column (name = "quantidade")
+    private int qtd;
 
     public int getId() {
         return id;

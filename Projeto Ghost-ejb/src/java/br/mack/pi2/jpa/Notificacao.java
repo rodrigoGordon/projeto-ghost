@@ -7,21 +7,26 @@
 package br.mack.pi2.jpa;
 
 import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import java.util.Date;
+import javax.persistence.*;
 
 /**
  *
  * @author MichelOh
  */
-@Entity
+@Entity (name = "notificacao")
 public class Notificacao implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column (name = "idNotificacao")
     private int id;
+    
+    @Column (name = "email", length = 100)
+    private String email;
+    @Column (name = "dt_notificacao")
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date dtNotificacao;
 
     public int getId() {
         return id;

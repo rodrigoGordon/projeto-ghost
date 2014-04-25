@@ -7,22 +7,38 @@
 package br.mack.pi2.jpa;
 
 import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import java.util.Date;
+import javax.persistence.*;
 
 /**
  *
  * @author MichelOh
  */
-@Entity
+@Entity (name = "evento")
 public class Evento implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column (name = "idEvento")
     private int id;
-
+    
+    @Column (name = "nomeEvento", length = 100)
+    private String nomeEvento;
+    @Column (name = "descEvento", length = 255)
+    private String descEvento;
+    @Column (name = "dt_inicio")
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date dtInicio;
+    @Column (name = "dt_fim")
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date dtFim;
+    @Column (name = "isItemAdd")
+    private boolean itemAdd;
+    @Column (name = "isInscricao")
+    private boolean inscricao;
+    @Column (name = "isPrivado")
+    private boolean privado;
+    
     public int getId() {
         return id;
     }
