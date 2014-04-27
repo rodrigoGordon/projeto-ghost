@@ -13,7 +13,8 @@ import javax.persistence.*;
  *
  * @author MichelOh
  */
-@Entity (name = "restricao_evento")
+@Entity 
+@Table (name = "restricao_evento")
 public class Restricao_evento implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

@@ -14,7 +14,8 @@ import javax.persistence.*;
  *
  * @author MichelOh
  */
-@Entity (name = "notificacao")
+@Entity 
+@Table (name = "notificacao")
 public class Notificacao implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

@@ -16,6 +16,7 @@ import javax.persistence.*;
  * @author MichelOh
  */
 @Entity
+@Table (name = "unidade_academica")
 public class Unidade_Academica implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
