@@ -13,7 +13,8 @@ import javax.persistence.*;
  *
  * @author MichelOh
  */
-@Entity (name = "itens_de_infra")
+@Entity 
+@Table (name = "itens_de_infra")
 public class Itens_de_infra implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
