@@ -13,9 +13,11 @@ import javax.ejb.LocalBean;
  */
 @Stateless
 @LocalBean
-public class alunoCRUD {
+public class AlunoCRUD {
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
+    
+    
 
 }
