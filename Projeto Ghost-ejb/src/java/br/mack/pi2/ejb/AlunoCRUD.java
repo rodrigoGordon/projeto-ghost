@@ -14,6 +14,7 @@ import javax.ejb.LocalBean;
 @Stateless
 @LocalBean
 public class AlunoCRUD {
+    private int tia;
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
