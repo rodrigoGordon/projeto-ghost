@@ -91,8 +91,8 @@ public class Evento implements Serializable {
     private Locais idLocal;
     
     @ManyToOne
-    @JoinColumn(name="responsavel", nullable=false)
-    private Usuario idLogin;
+    @JoinColumn(name="idLogin", nullable=false)
+    private Usuario responsavel;
     
     public int getIdEvento() {
         return idEvento;
@@ -240,17 +240,17 @@ public class Evento implements Serializable {
     }
 
     /**
-     * @return the idLogin
+     * @return the responsavel
      */
-    public Usuario getIdLogin() {
-        return idLogin;
+    public Usuario getResponsavel() {
+        return responsavel;
     }
 
     /**
-     * @param idLogin the idLogin to set
+     * @param responsavel the responsavel to set
      */
-    public void setIdLogin(Usuario idLogin) {
-        this.idLogin = idLogin;
+    public void setResponsavel(Usuario responsavel) {
+        this.responsavel = responsavel;
     }
     
 }

@@ -22,7 +22,7 @@ public class Usuario implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @OneToOne
-    @JoinColumn (name = "idLogin")
+    @JoinColumn (name = "tia")
     private int idLogin;
     
     @Column (name = "nomeUser", length = 10)
