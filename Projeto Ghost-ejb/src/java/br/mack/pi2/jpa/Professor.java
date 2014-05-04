@@ -18,7 +18,6 @@ import javax.persistence.*;
 public class Professor implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @Column (name = "drt")
     @OneToOne (mappedBy = "professor")
     private int drt;
     

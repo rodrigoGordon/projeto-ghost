@@ -21,9 +21,8 @@ public class Usuario implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column (name = "idLogin")
     @OneToOne
-    @JoinColumn
+    @JoinColumn (name = "idLogin")
     private int idLogin;
     
     @Column (name = "nomeUser", length = 10)
