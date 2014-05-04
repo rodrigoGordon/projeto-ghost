@@ -7,7 +7,9 @@
 package br.mack.pi2.jpa;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.*;
 
 /**
@@ -39,6 +41,58 @@ public class Evento implements Serializable {
     private boolean inscricao;
     @Column (name = "isPrivado")
     private boolean privado;
+    
+    @OneToMany(mappedBy="Evento", cascade=CascadeType.ALL)
+    private List<Itens_de_infra> ItensDeInfra = new ArrayList<Itens_de_infra>();
+    
+    public List<Itens_de_infra>getItensDeInfra(){
+        return ItensDeInfra;
+    }
+    
+    public void setItensDeInfra(List<Itens_de_infra> ItensDeInfra){
+        this.ItensDeInfra = ItensDeInfra;
+    }
+    
+    @OneToMany(mappedBy="Evento", cascade=CascadeType.ALL)
+    private List<Notificacao> Notificacoes = new ArrayList<Notificacao>();
+    
+    public List<Notificacao>getNotificacoes(){
+        return Notificacoes;
+    }
+    
+    public void setNotificacoes(List<Notificacao> notificacoes){
+        this.Notificacoes = notificacoes;
+    }
+    
+    @OneToMany(mappedBy="Evento", cascade=CascadeType.ALL)
+    private List<Participantes> Participantes = new ArrayList<Participantes>();
+    
+    public List<Participantes>getParticipantes(){
+        return Participantes;
+    }
+    
+    public void setParticipantes(List<Participantes> participantes){
+        this.Participantes = participantes;
+    }
+    
+    @OneToMany(mappedBy="Evento", cascade=CascadeType.ALL)
+    private List<Restricao_evento> RestricaoEventos = new ArrayList<Restricao_evento>();
+    
+    public List<Restricao_evento>getRestricaoEventos(){
+        return RestricaoEventos;
+    }
+    
+    public void setRestricaoEventos(List<Restricao_evento> restricaoEventos){
+        this.RestricaoEventos = restricaoEventos;
+    }
+    
+    @ManyToOne
+    @JoinColumn(name="Locais_idLocal", nullable=false)
+    private Locais idLocal;
+    
+    @ManyToOne
+    @JoinColumn(name="responsavel", nullable=false)
+    private Usuario idLogin;
     
     public int getIdEvento() {
         return idEvento;
@@ -169,6 +223,34 @@ public class Evento implements Serializable {
      */
     public void setPrivado(boolean privado) {
         this.privado = privado;
+    }
+
+    /**
+     * @return the idLocal
+     */
+    public Locais getIdLocal() {
+        return idLocal;
+    }
+
+    /**
+     * @param idLocal the idLocal to set
+     */
+    public void setIdLocal(Locais idLocal) {
+        this.idLocal = idLocal;
+    }
+
+    /**
+     * @return the idLogin
+     */
+    public Usuario getIdLogin() {
+        return idLogin;
+    }
+
+    /**
+     * @param idLogin the idLogin to set
+     */
+    public void setIdLogin(Usuario idLogin) {
+        this.idLogin = idLogin;
     }
     
 }

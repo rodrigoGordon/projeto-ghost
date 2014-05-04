@@ -24,6 +24,14 @@ public class Itens_de_infra implements Serializable {
     @Column (name = "quantidade")
     private int qtd;
 
+    @ManyToOne
+    @JoinColumn(name="Infraestrutura_idEstrutura", nullable=false)
+    private Infraestrutura idInfra;
+   
+    @ManyToOne
+    @JoinColumn(name="Evento_idEvento", nullable=false)
+    private Evento idEvento;
+    
     public int getId() {
         return id;
     }
@@ -69,6 +77,34 @@ public class Itens_de_infra implements Serializable {
      */
     public void setQtd(int qtd) {
         this.qtd = qtd;
+    }
+
+    /**
+     * @return the idInfra
+     */
+    public Infraestrutura getIdInfra() {
+        return idInfra;
+    }
+
+    /**
+     * @param idInfra the idInfra to set
+     */
+    public void setIdInfra(Infraestrutura idInfra) {
+        this.idInfra = idInfra;
+    }
+
+    /**
+     * @return the idEvento
+     */
+    public Evento getIdEvento() {
+        return idEvento;
+    }
+
+    /**
+     * @param idEvento the idEvento to set
+     */
+    public void setIdEvento(Evento idEvento) {
+        this.idEvento = idEvento;
     }
     
 }

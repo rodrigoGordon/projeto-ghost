@@ -7,6 +7,8 @@
 package br.mack.pi2.jpa;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.*;
 
 /**
@@ -20,6 +22,8 @@ public class Usuario implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column (name = "idLogin")
+    @OneToOne
+    @JoinColumn
     private int idLogin;
     
     @Column (name = "nomeUser", length = 10)
@@ -31,6 +35,32 @@ public class Usuario implements Serializable {
     @Column (name = "pass", length = 16)
     private int pass; //valor binario: colocar 0b no numero
 
+    @OneToMany(mappedBy="Usuario", cascade=CascadeType.ALL)
+    private List<Evento> Eventos = new ArrayList<Evento>();
+    
+    public List<Evento>getEventos(){
+        return Eventos;
+    }
+    
+    public void setEventos(List<Evento> eventos){
+        this.Eventos = eventos;
+    }
+    
+    @OneToMany(mappedBy="Usuario", cascade=CascadeType.ALL)
+    private List<Participantes> Participantes = new ArrayList<Participantes>();
+    
+    public List<Participantes>getParticipantes(){
+        return Participantes;
+    }
+    
+    public void setParticipantes(List<Participantes> participantes){
+        this.Participantes = participantes;
+    }
+    
+    @ManyToOne
+    @JoinColumn(name="Permissao_tipo_user", nullable=false)
+    private Permissao tipo_user;
+    
     public int getIdLogin() {
         return idLogin;
     }

@@ -7,6 +7,8 @@
 package br.mack.pi2.jpa;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.*;
 
 /**
@@ -33,6 +35,28 @@ public class Locais implements Serializable {
     @Column (name = "valor")
     private float valor;
 
+    @OneToMany(mappedBy="Locais", cascade=CascadeType.ALL)
+    private List<Evento> Eventos = new ArrayList<Evento>();
+    
+    public List<Evento>getEventos(){
+        return Eventos;
+    }
+    
+    public void setEventos(List<Evento> eventos){
+        this.Eventos = eventos;
+    }
+    
+    @OneToMany(mappedBy="Locais", cascade=CascadeType.ALL)
+    private List<Itens_Local> ItensLocal = new ArrayList<Itens_Local>();
+    
+    public List<Itens_Local>getItensLocal(){
+        return ItensLocal;
+    }
+    
+    public void setItensLocal(List<Itens_Local> itensLocal){
+        this.ItensLocal = itensLocal;
+    }
+    
     public int getIdLocal() {
         return idLocal;
     }

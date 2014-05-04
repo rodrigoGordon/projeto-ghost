@@ -29,6 +29,10 @@ public class Notificacao implements Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dtNotificacao;
 
+    @ManyToOne
+    @JoinColumn(name="Evento_idEvento", nullable=false)
+    private Evento idEvento;
+    
     public int getIdNotificacao() {
         return idNotificacao;
     }
@@ -88,6 +92,20 @@ public class Notificacao implements Serializable {
      */
     public void setDtNotificacao(Date dtNotificacao) {
         this.dtNotificacao = dtNotificacao;
+    }
+
+    /**
+     * @return the idEvento
+     */
+    public Evento getIdEvento() {
+        return idEvento;
+    }
+
+    /**
+     * @param idEvento the idEvento to set
+     */
+    public void setIdEvento(Evento idEvento) {
+        this.idEvento = idEvento;
     }
     
 }

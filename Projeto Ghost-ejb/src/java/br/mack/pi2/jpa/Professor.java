@@ -19,7 +19,12 @@ public class Professor implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Column (name = "drt")
+    @OneToOne (mappedBy = "professor")
     private int drt;
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "Unidade_Academica_id_UA", nullable = false)
+    private Unidade_Academica id_UA;
     
     @Column (name = "nomeProf", length = 100)
     private String nomeProf;

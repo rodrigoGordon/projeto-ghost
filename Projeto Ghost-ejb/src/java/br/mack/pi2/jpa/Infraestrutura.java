@@ -7,6 +7,8 @@
 package br.mack.pi2.jpa;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.*;
 
 /**
@@ -31,6 +33,17 @@ public class Infraestrutura implements Serializable {
     @Column (name = "valor")
     private float valor;
 
+    @OneToMany(mappedBy="Infraestrutura", cascade=CascadeType.ALL)
+    private List<Itens_de_infra> ItensDeInfra = new ArrayList<Itens_de_infra>();
+    
+    public List<Itens_de_infra>getItensDeInfra(){
+        return ItensDeInfra;
+    }
+    
+    public void setItensDeInfra(List<Itens_de_infra> ItensDeInfra){
+        this.ItensDeInfra = ItensDeInfra;
+    }
+    
     public int getIdEstrutura() {
         return idEstrutura;
     }

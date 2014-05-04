@@ -21,6 +21,14 @@ public class Participantes implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
+    @ManyToOne
+    @JoinColumn(name="Evento_idEvento", nullable=false)
+    private Evento idEvento;
+    
+    @ManyToOne
+    @JoinColumn(name="Usuario_idLogin", nullable=false)
+    private Usuario idLogin;
+    
     public int getId() {
         return id;
     }
@@ -52,6 +60,34 @@ public class Participantes implements Serializable {
     @Override
     public String toString() {
         return "br.mack.pi2.jpa.Participantes[ id=" + id + " ]";
+    }
+
+    /**
+     * @return the idEvento
+     */
+    public Evento getIdEvento() {
+        return idEvento;
+    }
+
+    /**
+     * @param idEvento the idEvento to set
+     */
+    public void setIdEvento(Evento idEvento) {
+        this.idEvento = idEvento;
+    }
+
+    /**
+     * @return the idLogin
+     */
+    public Usuario getIdLogin() {
+        return idLogin;
+    }
+
+    /**
+     * @param idLogin the idLogin to set
+     */
+    public void setIdLogin(Usuario idLogin) {
+        this.idLogin = idLogin;
     }
     
 }

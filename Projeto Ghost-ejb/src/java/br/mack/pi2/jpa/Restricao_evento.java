@@ -22,6 +22,14 @@ public class Restricao_evento implements Serializable {
     @Column (name = "idRestricao_Evento")
     private int idRestricaoEvento;
 
+    @ManyToOne
+    @JoinColumn(name="Evento_idEvento", nullable=false)
+    private Evento idEvento;
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "Unidade_Academica_id_UA", nullable = false)
+    private Unidade_Academica id_UA;
+    
     public int getIdRestricaoEvento() {
         return idRestricaoEvento;
     }
@@ -53,6 +61,20 @@ public class Restricao_evento implements Serializable {
     @Override
     public String toString() {
         return "br.mack.pi2.jpa.Restricao_evento[ id=" + idRestricaoEvento + " ]";
+    }
+
+    /**
+     * @return the idEvento
+     */
+    public Evento getIdEvento() {
+        return idEvento;
+    }
+
+    /**
+     * @param idEvento the idEvento to set
+     */
+    public void setIdEvento(Evento idEvento) {
+        this.idEvento = idEvento;
     }
     
 }
