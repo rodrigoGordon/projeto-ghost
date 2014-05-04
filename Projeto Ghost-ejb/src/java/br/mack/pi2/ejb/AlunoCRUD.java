@@ -4,6 +4,7 @@
  */
 package br.mack.pi2.ejb;
 
+import br.mack.pi2.bean.AlunoCRUDInt;
 import br.mack.pi2.jpa.Aluno;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -17,14 +18,18 @@ import javax.persistence.Persistence;
  */
 @Stateless
 @LocalBean
-public class AlunoCRUD {
+public class AlunoCRUD implements AlunoCRUDInt{
     
     private Aluno aluno;
 
-    EntityManagerFactory  factory = Persistence.createEntityManagerFactory("aluno");
+    EntityManagerFactory  factory;
     
-    EntityManager em = factory.createEntityManager();
+    EntityManager em;
     
+    public void setUp() {
+        factory = Persistence.createEntityManagerFactory("Projeto_Ghost-ejbPU");
+        em = factory.createEntityManager();
+    }
     public void insereAluno(Aluno aluno){
         
         aluno.getTIA();
