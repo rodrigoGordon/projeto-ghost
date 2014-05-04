@@ -2,9 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.mack.pi2.ejb;
+package br.mack.pi2.Beans;
 
-import br.mack.pi2.bean.AlunoCRUDInt;
+import br.mack.pi2.Sessions.AlunoCRUD;
 import br.mack.pi2.jpa.Aluno;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -18,7 +18,7 @@ import javax.persistence.Persistence;
  */
 @Stateless
 @LocalBean
-public class AlunoCRUD implements AlunoCRUDInt{
+public class AlunoBean implements AlunoCRUD{
     
     private Aluno aluno;
 

@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package br.mack.pi2.ejb;
+package br.mack.pi2.Beans;
 
 import javax.ejb.Stateless;
 import javax.ejb.LocalBean;
@@ -15,7 +15,7 @@ import javax.ejb.LocalBean;
  */
 @Stateless
 @LocalBean
-public class EventoCRUD {
+public class ParticipantesBean {
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")

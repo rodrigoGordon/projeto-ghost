@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-import br.mack.pi2.ejb.AlunoCRUD;
+import br.mack.pi2.Beans.AlunoBean;
 import br.mack.pi2.jpa.Aluno;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -21,7 +21,7 @@ public class CrudTest {
     
     public static void main (String[]args){
         Aluno aluno = new Aluno();
-        AlunoCRUD alunoCrud = new AlunoCRUD();
+        AlunoBean alunoCrud = new AlunoBean();
                 
         aluno.setCurso("Sistemas");
         aluno.setId_UA(null);
