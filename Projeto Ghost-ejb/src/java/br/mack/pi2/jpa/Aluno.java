@@ -20,6 +20,7 @@ public class Aluno implements Serializable {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Column (name = "tia")
+    @OneToOne (mappedBy = "aluno")
     private int TIA;
     
     @ManyToOne(fetch = FetchType.LAZY)
