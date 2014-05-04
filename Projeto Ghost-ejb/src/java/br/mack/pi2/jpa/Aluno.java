@@ -24,7 +24,7 @@ public class Aluno implements Serializable {
     private int TIA;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "Unidade_Academica_id_UA", nullable = false)
+    @JoinColumn(name = "Unidade_Academica_id_UA", nullable = true)
     private Unidade_Academica id_UA;
     @Column (name = "nomeAluno", length = 100)
     private String nomeAluno;
