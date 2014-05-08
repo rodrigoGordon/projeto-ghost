@@ -26,17 +26,6 @@ public class Permissao implements Serializable {
     
     @Column (name = "desc_user", length = 20)
     private String descUser;
-
-    @OneToMany(mappedBy="Permissao", cascade=CascadeType.ALL)
-    private List<Usuario> Usuarios = new ArrayList<Usuario>();
-    
-    public List<Usuario>getUsuarios(){
-        return Usuarios;
-    }
-    
-    public void setUsuarios(List<Usuario> usuarios){
-        this.Usuarios = usuarios;
-    }
     
     public int getId() {
         return id;

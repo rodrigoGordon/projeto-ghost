@@ -29,9 +29,8 @@ public class Itens_Local implements Serializable {
     @Column (name = "quantidade")
     private int qtd;
 
-    @ManyToOne
-    @JoinColumn(name="Locais_idLocal", nullable = false)
-    private Locais idLocal;
+    @Column(name="Locais_idLocal")
+    private int idLocal;
     
     public int getIdItensLocal() {
         return idItensLocal;
@@ -111,14 +110,14 @@ public class Itens_Local implements Serializable {
     /**
      * @return the idLocal
      */
-    public Locais getIdLocal() {
+    public int getIdLocal() {
         return idLocal;
     }
 
     /**
      * @param idLocal the idLocal to set
      */
-    public void setIdLocal(Locais idLocal) {
+    public void setIdLocal(int idLocal) {
         this.idLocal = idLocal;
     }
     

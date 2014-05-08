@@ -18,12 +18,10 @@ import javax.persistence.*;
 public class Professor implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @OneToOne (mappedBy = "professor")
     private int drt;
     
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "Unidade_Academica_id_UA", nullable = false)
-    private Unidade_Academica id_UA;
+    @Column(name = "Unidade_Academica_id_UA", length = 10)
+    private String id_UA;
     
     @Column (name = "nomeProf", length = 100)
     private String nomeProf;
@@ -89,6 +87,20 @@ public class Professor implements Serializable {
      */
     public void setTipoProf(String tipoProf) {
         this.tipoProf = tipoProf;
+    }
+
+    /**
+     * @return the id_UA
+     */
+    public String getId_UA() {
+        return id_UA;
+    }
+
+    /**
+     * @param id_UA the id_UA to set
+     */
+    public void setId_UA(String id_UA) {
+        this.id_UA = id_UA;
     }
     
 }

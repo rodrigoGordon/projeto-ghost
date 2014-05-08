@@ -19,12 +19,10 @@ public class Aluno implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
-    @OneToOne (mappedBy = "aluno")
     private int TIA;
     
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "Unidade_Academica_id_UA", nullable = true)
-    private Unidade_Academica id_UA;
+    @Column (name = "Unidade_Academica_id_UA", length = 10)
+    private String id_UA;
     @Column (name = "nomeAluno", length = 100)
     private String nomeAluno;
     @Column (name = "curso", length = 50)
@@ -48,11 +46,11 @@ public class Aluno implements Serializable {
         return nomeAluno;
     }
 
-    public Unidade_Academica getId_UA() {
+    public String getId_UA() {
         return id_UA;
     }
 
-    public void setId_UA(Unidade_Academica id_UA) {
+    public void setId_UA(String id_UA) {
         this.id_UA = id_UA;
     }
 

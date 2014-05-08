@@ -34,28 +34,6 @@ public class Locais implements Serializable {
     private int predio;
     @Column (name = "valor")
     private float valor;
-
-    @OneToMany(mappedBy="Locais", cascade=CascadeType.ALL)
-    private List<Evento> Eventos = new ArrayList<Evento>();
-    
-    public List<Evento>getEventos(){
-        return Eventos;
-    }
-    
-    public void setEventos(List<Evento> eventos){
-        this.Eventos = eventos;
-    }
-    
-    @OneToMany(mappedBy="Locais", cascade=CascadeType.ALL)
-    private List<Itens_Local> ItensLocal = new ArrayList<Itens_Local>();
-    
-    public List<Itens_Local>getItensLocal(){
-        return ItensLocal;
-    }
-    
-    public void setItensLocal(List<Itens_Local> itensLocal){
-        this.ItensLocal = itensLocal;
-    }
     
     public int getIdLocal() {
         return idLocal;

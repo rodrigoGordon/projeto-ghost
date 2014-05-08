@@ -21,13 +21,11 @@ public class Participantes implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @ManyToOne
-    @JoinColumn(name="Evento_idEvento", nullable=false)
-    private Evento idEvento;
+    @Column(name="Evento_idEvento")
+    private int idEvento;
     
-    @ManyToOne
-    @JoinColumn(name="Usuario_idLogin", nullable=false)
-    private Usuario idLogin;
+    @Column(name="Usuario_idLogin")
+    private int idLogin;
     
     public int getId() {
         return id;
@@ -65,28 +63,28 @@ public class Participantes implements Serializable {
     /**
      * @return the idEvento
      */
-    public Evento getIdEvento() {
+    public int getIdEvento() {
         return idEvento;
     }
 
     /**
      * @param idEvento the idEvento to set
      */
-    public void setIdEvento(Evento idEvento) {
+    public void setIdEvento(int idEvento) {
         this.idEvento = idEvento;
     }
 
     /**
      * @return the idLogin
      */
-    public Usuario getIdLogin() {
+    public int getIdLogin() {
         return idLogin;
     }
 
     /**
      * @param idLogin the idLogin to set
      */
-    public void setIdLogin(Usuario idLogin) {
+    public void setIdLogin(int idLogin) {
         this.idLogin = idLogin;
     }
     

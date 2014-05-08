@@ -27,29 +27,12 @@ public class Unidade_Academica implements Serializable {
     @Column (name = "nome_UA", length = 50)
     private String nome_UA;
     
-    @OneToMany (fetch = FetchType.LAZY, mappedBy = "unidade_academica")
-    private Set<Aluno> aluno = new HashSet<Aluno>(0);
-
-    @OneToMany (fetch = FetchType.LAZY, mappedBy = "unidade_academica")
-    private Set<Professor> professor = new HashSet<Professor>(0);
-    
-    @OneToMany (fetch = FetchType.LAZY, mappedBy = "unidade_academica")
-    private Set<Restricao_evento> restricaoEvento = new HashSet<Restricao_evento>(0);
-    
     public String getId_UA() {
         return id_UA;
     }
 
     public void setId_UA(String id_UA) {
         this.id_UA = id_UA;
-    }
-    
-    public Set<Aluno> getAluno() {
-        return aluno;
-    }
-
-    public void setAluno(Set<Aluno> aluno) {
-        this.aluno = aluno;
     }
 
     public String getNome_UA() {
@@ -84,33 +67,5 @@ public class Unidade_Academica implements Serializable {
     public String toString() {
         return "br.mack.pi2.jpa.Unidade_Academica[ id=" + id_UA + " ]";
     }
-
-    /**
-     * @return the professor
-     */
-    public Set<Professor> getProfessor() {
-        return professor;
-    }
-
-    /**
-     * @param professor the professor to set
-     */
-    public void setProfessor(Set<Professor> professor) {
-        this.professor = professor;
-    }
-
-    /**
-     * @return the restricaoEvento
-     */
-    public Set<Restricao_evento> getRestricaoEvento() {
-        return restricaoEvento;
-    }
-
-    /**
-     * @param restricaoEvento the restricaoEvento to set
-     */
-    public void setRestricaoEvento(Set<Restricao_evento> restricaoEvento) {
-        this.restricaoEvento = restricaoEvento;
-    }
-
+    
 }

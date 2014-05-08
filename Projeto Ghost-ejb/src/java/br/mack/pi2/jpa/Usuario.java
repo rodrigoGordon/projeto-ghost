@@ -20,9 +20,6 @@ import javax.persistence.*;
 public class Usuario implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @OneToOne
-    @JoinColumn (name = "tia")
     private int idLogin;
     
     @Column (name = "nomeUser", length = 10)
@@ -33,32 +30,9 @@ public class Usuario implements Serializable {
     private int rg;
     @Column (name = "pass", length = 16)
     private int pass; //valor binario: colocar 0b no numero
-
-    @OneToMany(mappedBy="Usuario", cascade=CascadeType.ALL)
-    private List<Evento> Eventos = new ArrayList<Evento>();
     
-    public List<Evento>getEventos(){
-        return Eventos;
-    }
-    
-    public void setEventos(List<Evento> eventos){
-        this.Eventos = eventos;
-    }
-    
-    @OneToMany(mappedBy="Usuario", cascade=CascadeType.ALL)
-    private List<Participantes> Participantes = new ArrayList<Participantes>();
-    
-    public List<Participantes>getParticipantes(){
-        return Participantes;
-    }
-    
-    public void setParticipantes(List<Participantes> participantes){
-        this.Participantes = participantes;
-    }
-    
-    @ManyToOne
-    @JoinColumn(name="Permissao_tipo_user", nullable=false)
-    private Permissao tipo_user;
+    @Column(name="Permissao_tipo_user")
+    private int tipo_user;
     
     public int getIdLogin() {
         return idLogin;
@@ -147,6 +121,20 @@ public class Usuario implements Serializable {
      */
     public void setPass(int pass) {
         this.pass = pass;
+    }
+
+    /**
+     * @return the tipo_user
+     */
+    public int getTipo_user() {
+        return tipo_user;
+    }
+
+    /**
+     * @param tipo_user the tipo_user to set
+     */
+    public void setTipo_user(int tipo_user) {
+        this.tipo_user = tipo_user;
     }
     
 }

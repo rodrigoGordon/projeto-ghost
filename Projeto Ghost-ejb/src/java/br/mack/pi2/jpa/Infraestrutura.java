@@ -32,17 +32,6 @@ public class Infraestrutura implements Serializable {
     private int tipoEstrutura;
     @Column (name = "valor")
     private float valor;
-
-    @OneToMany(mappedBy="Infraestrutura", cascade=CascadeType.ALL)
-    private List<Itens_de_infra> ItensDeInfra = new ArrayList<Itens_de_infra>();
-    
-    public List<Itens_de_infra>getItensDeInfra(){
-        return ItensDeInfra;
-    }
-    
-    public void setItensDeInfra(List<Itens_de_infra> ItensDeInfra){
-        this.ItensDeInfra = ItensDeInfra;
-    }
     
     public int getIdEstrutura() {
         return idEstrutura;

@@ -6,6 +6,8 @@
 
 package br.mack.pi2.servlet;
 
+import br.mack.pi2.Sessions.AlunoCRUD;
+import br.mack.pi2.jpa.Aluno;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Level;

@@ -22,13 +22,11 @@ public class Restricao_evento implements Serializable {
     @Column (name = "idRestricao_Evento")
     private int idRestricaoEvento;
 
-    @ManyToOne
-    @JoinColumn(name="Evento_idEvento", nullable=false)
-    private Evento idEvento;
+    @Column(name="Evento_idEvento")
+    private int idEvento;
     
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "Unidade_Academica_id_UA", nullable = false)
-    private Unidade_Academica id_UA;
+    @Column(name = "Unidade_Academica_id_UA", length = 10)
+    private String id_UA;
     
     public int getIdRestricaoEvento() {
         return idRestricaoEvento;
@@ -66,15 +64,29 @@ public class Restricao_evento implements Serializable {
     /**
      * @return the idEvento
      */
-    public Evento getIdEvento() {
+    public int getIdEvento() {
         return idEvento;
     }
 
     /**
      * @param idEvento the idEvento to set
      */
-    public void setIdEvento(Evento idEvento) {
+    public void setIdEvento(int idEvento) {
         this.idEvento = idEvento;
+    }
+
+    /**
+     * @return the id_UA
+     */
+    public String getId_UA() {
+        return id_UA;
+    }
+
+    /**
+     * @param id_UA the id_UA to set
+     */
+    public void setId_UA(String id_UA) {
+        this.id_UA = id_UA;
     }
     
 }
