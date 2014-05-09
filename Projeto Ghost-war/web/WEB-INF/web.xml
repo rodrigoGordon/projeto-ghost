@@ -4,13 +4,72 @@
         <servlet-name>AlunoTest</servlet-name>
         <servlet-class>br.mack.pi2.servlet.AlunoTest</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>loginGhostServlet</servlet-name>
+        <servlet-class>br.mack.pi2.servlet.loginGhostServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>registrarUsuarioGhostServlet</servlet-name>
+        <servlet-class>br.mack.pi2.servlet.registrarUsuarioGhostServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>cadastroEventoGhostServlet</servlet-name>
+        <servlet-class>br.mack.pi2.servlet.cadastroEventoGhostServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>cadastroInfraGhostServlet</servlet-name>
+        <servlet-class>br.mack.pi2.servlet.cadastroInfraGhostServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>cadastroItensLocalGhostServlet</servlet-name>
+        <servlet-class>br.mack.pi2.servlet.cadastroItensLocalGhostServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>homeGhostServlet</servlet-name>
+        <servlet-class>br.mack.pi2.servlet.homeGhostServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>pesquisaEventosGhostServlet</servlet-name>
+        <servlet-class>br.mack.pi2.servlet.pesquisaEventosGhostServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AlunoTest</servlet-name>
         <url-pattern>/AlunoTest</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>loginGhostServlet</servlet-name>
+        <url-pattern>/loginGhostServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>registrarUsuarioGhostServlet</servlet-name>
+        <url-pattern>/registrarUsuarioGhostServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>cadastroEventoGhostServlet</servlet-name>
+        <url-pattern>/cadastroEventoGhostServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>cadastroInfraGhostServlet</servlet-name>
+        <url-pattern>/cadastroInfraGhostServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>cadastroItensLocalGhostServlet</servlet-name>
+        <url-pattern>/cadastroItensLocalGhostServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>homeGhostServlet</servlet-name>
+        <url-pattern>/homeGhostServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>pesquisaEventosGhostServlet</servlet-name>
+        <url-pattern>/pesquisaEventosGhostServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+    <welcome-file-list>
+        <welcome-file>/homeGhost.jsp</welcome-file>
+    </welcome-file-list>
 </web-app>
