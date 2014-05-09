@@ -18,7 +18,7 @@ import javax.persistence.*;
 public class Aluno implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @Column(name = "TIA")
     private int TIA;
     
     @Column (name = "Unidade_Academica_id_UA", length = 10)

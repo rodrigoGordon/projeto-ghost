@@ -4,18 +4,16 @@
  * and open the template in the editor.
  */
 
-package br.mack.pi2.Beans;
+package br.mack.pi2.ejb;
 
 import javax.ejb.Stateless;
-import javax.ejb.LocalBean;
 
 /**
  *
  * @author alvarowf
  */
-@Stateless
-@LocalBean
-public class PermissaoBean {
+@Stateless (mappedName = "notifDAO", name = "notifDAO")
+public class NotificacaoBean {
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")

@@ -2,11 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.mack.pi2.Beans;
+package br.mack.pi2.ejb;
 
-import br.mack.pi2.Sessions.AlunoCRUD;
+import br.mack.pi2.ejb.interfaces.AlunoRemote;
 import br.mack.pi2.jpa.Aluno;
-import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -17,9 +16,8 @@ import javax.persistence.PersistenceContext;
  *
  * @author michel.oh
  */
-@Stateless
-@LocalBean
-public class AlunoBean implements AlunoCRUD{
+@Stateless (mappedName = "alunoDAO", name = "alunoDAO")
+public class AlunoBean implements AlunoRemote{
     
     private Aluno aluno;
 

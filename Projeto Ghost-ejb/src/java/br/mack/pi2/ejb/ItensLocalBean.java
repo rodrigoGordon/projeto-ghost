@@ -4,18 +4,16 @@
  * and open the template in the editor.
  */
 
-package br.mack.pi2.Beans;
+package br.mack.pi2.ejb;
 
 import javax.ejb.Stateless;
-import javax.ejb.LocalBean;
 
 /**
  *
  * @author alvarowf
  */
-@Stateless
-@LocalBean
-public class ParticipantesBean {
+@Stateless (mappedName = "itenslocDAO", name = "itenslocDAO")
+public class ItensLocalBean {
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")

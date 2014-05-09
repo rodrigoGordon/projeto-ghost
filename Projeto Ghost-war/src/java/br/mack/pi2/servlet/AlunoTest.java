@@ -6,13 +6,15 @@
 
 package br.mack.pi2.servlet;
 
-import br.mack.pi2.Sessions.AlunoCRUD;
+import br.mack.pi2.ServiceLocator.ServiceLocator;
+import br.mack.pi2.ejb.interfaces.AlunoRemote;
 import br.mack.pi2.jpa.Aluno;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
+import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -24,16 +26,23 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class AlunoTest extends HttpServlet {
 
-    @EJB AlunoCRUD alunocrud;
-    Aluno aluno;
+    AlunoRemote alunoejb;
+    Aluno aluno = new Aluno();
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        aluno.setTIA(01);
+        try {
+            alunoejb = ServiceLocator.getinstance().getAluno();
+        } catch (NamingException ex) {
+            Logger.getLogger(AlunoTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        aluno.setTIA(1);
         aluno.setNomeAluno("Michel");
+        aluno.setId_UA("FCI");
         aluno.setPeriodo("Noturno");
         aluno.setCurso("Sistemas");
         try {
-            alunocrud.insereAluno(aluno);
+            alunoejb.insereAluno(aluno);
         } catch (Exception ex) {
             Logger.getLogger(AlunoTest.class.getName()).log(Level.SEVERE, null, ex);
         }
