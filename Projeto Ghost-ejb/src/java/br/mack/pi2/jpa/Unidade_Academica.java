@@ -8,6 +8,7 @@ package br.mack.pi2.jpa;
 
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import javax.persistence.*;
 
@@ -26,6 +27,9 @@ public class Unidade_Academica implements Serializable {
     
     @Column (name = "nome_UA", length = 50)
     private String nome_UA;
+    
+    @OneToMany(fetch = FetchType.LAZY,targetEntity = Aluno.class)
+    private List<Aluno> listaAlunos;
     
     public String getId_UA() {
         return id_UA;
@@ -66,6 +70,20 @@ public class Unidade_Academica implements Serializable {
     @Override
     public String toString() {
         return "br.mack.pi2.jpa.Unidade_Academica[ id=" + id_UA + " ]";
+    }
+
+    /**
+     * @return the listaAlunos
+     */
+    public List<Aluno> getListaAlunos() {
+        return listaAlunos;
+    }
+
+    /**
+     * @param listaAlunos the listaAlunos to set
+     */
+    public void setListaAlunos(List<Aluno> listaAlunos) {
+        this.listaAlunos = listaAlunos;
     }
     
 }

@@ -30,6 +30,9 @@ public class Aluno implements Serializable {
     @Column (name = "periodo", length = 10)
     private String periodo;
 
+    @ManyToOne(fetch = FetchType.LAZY,targetEntity = Unidade_Academica.class)
+    private Unidade_Academica unidadeAcademica;
+    
     public int getTIA() {
         return TIA;
     }
@@ -93,6 +96,20 @@ public class Aluno implements Serializable {
     @Override
     public String toString() {
         return "br.mack.pi2.jpa.Aluno[ id=" + TIA + ", nomeAluno =" + nomeAluno + ", curso=" + curso + ", periodo=" + periodo + " ]";
+    }
+
+    /**
+     * @return the unidadeAcademica
+     */
+    public Unidade_Academica getUnidadeAcademica() {
+        return unidadeAcademica;
+    }
+
+    /**
+     * @param unidadeAcademica the unidadeAcademica to set
+     */
+    public void setUnidadeAcademica(Unidade_Academica unidadeAcademica) {
+        this.unidadeAcademica = unidadeAcademica;
     }
 
 }
