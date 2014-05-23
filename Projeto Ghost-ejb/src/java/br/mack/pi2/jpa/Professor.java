@@ -20,8 +20,9 @@ public class Professor implements Serializable {
     @Id
     private int drt;
     
-    @Column(name = "Unidade_Academica_id_UA", length = 10)
-    private String id_UA;
+    @ManyToOne (fetch = FetchType.LAZY,targetEntity = Unidade_Academica.class)
+    @JoinColumn(name = "Unidade_Academica_id_UA")
+    private Unidade_Academica id_UA;
     
     @Column (name = "nomeProf", length = 100)
     private String nomeProf;
@@ -92,14 +93,14 @@ public class Professor implements Serializable {
     /**
      * @return the id_UA
      */
-    public String getId_UA() {
+    public Unidade_Academica getId_UA() {
         return id_UA;
     }
 
     /**
      * @param id_UA the id_UA to set
      */
-    public void setId_UA(String id_UA) {
+    public void setId_UA(Unidade_Academica id_UA) {
         this.id_UA = id_UA;
     }
     

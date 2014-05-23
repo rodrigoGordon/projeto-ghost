@@ -31,8 +31,17 @@ public class Usuario implements Serializable {
     @Column (name = "pass", length = 16)
     private int pass; //valor binario: colocar 0b no numero
     
-    @Column(name="Permissao_tipo_user")
-    private int tipo_user;
+    @ManyToOne (fetch = FetchType.LAZY,targetEntity = Permissao.class)
+    @JoinColumn (name="Permissao_tipo_user")
+    private Permissao tipo_user;
+    
+    @ManyToOne (fetch = FetchType.LAZY,targetEntity = Aluno.class)
+    @JoinColumn (name = "TIA", nullable = true)
+    private Aluno aluno;
+    
+    @ManyToOne (fetch = FetchType.LAZY,targetEntity = Professor.class)
+    @JoinColumn (name = "DRT", nullable = true)
+    private Professor professor;
     
     public int getIdLogin() {
         return idLogin;
@@ -126,15 +135,43 @@ public class Usuario implements Serializable {
     /**
      * @return the tipo_user
      */
-    public int getTipo_user() {
+    public Permissao getTipo_user() {
         return tipo_user;
     }
 
     /**
      * @param tipo_user the tipo_user to set
      */
-    public void setTipo_user(int tipo_user) {
+    public void setTipo_user(Permissao tipo_user) {
         this.tipo_user = tipo_user;
+    }
+
+    /**
+     * @return the aluno
+     */
+    public Aluno getAluno() {
+        return aluno;
+    }
+
+    /**
+     * @param aluno the aluno to set
+     */
+    public void setAluno(Aluno aluno) {
+        this.aluno = aluno;
+    }
+
+    /**
+     * @return the professor
+     */
+    public Professor getProfessor() {
+        return professor;
+    }
+
+    /**
+     * @param professor the professor to set
+     */
+    public void setProfessor(Professor professor) {
+        this.professor = professor;
     }
     
 }

@@ -19,13 +19,16 @@ public class Participantes implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column (name = "idParticipantes")
     private int id;
 
-    @Column(name="Evento_idEvento")
-    private int idEvento;
+    @ManyToOne (fetch = FetchType.LAZY,targetEntity = Evento.class)
+    @JoinColumn(name="Evento_idEvento")
+    private Evento idEvento;
     
-    @Column(name="Usuario_idLogin")
-    private int idLogin;
+    @ManyToOne (fetch = FetchType.LAZY,targetEntity = Usuario.class)
+    @JoinColumn(name="Usuario_idLogin")
+    private Usuario idLogin;
     
     public int getId() {
         return id;
@@ -63,29 +66,29 @@ public class Participantes implements Serializable {
     /**
      * @return the idEvento
      */
-    public int getIdEvento() {
+    public Evento getIdEvento() {
         return idEvento;
     }
 
     /**
      * @param idEvento the idEvento to set
      */
-    public void setIdEvento(int idEvento) {
+    public void setIdEvento(Evento idEvento) {
         this.idEvento = idEvento;
     }
 
     /**
      * @return the idLogin
      */
-    public int getIdLogin() {
+    public Usuario getIdLogin() {
         return idLogin;
     }
 
     /**
      * @param idLogin the idLogin to set
      */
-    public void setIdLogin(int idLogin) {
+    public void setIdLogin(Usuario idLogin) {
         this.idLogin = idLogin;
     }
-    
+
 }

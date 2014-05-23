@@ -29,8 +29,9 @@ public class Itens_Local implements Serializable {
     @Column (name = "quantidade")
     private int qtd;
 
-    @Column(name="Locais_idLocal")
-    private int idLocal;
+    @ManyToOne (fetch = FetchType.LAZY,targetEntity = Locais.class)
+    @JoinColumn(name="Locais_idLocal")
+    private Locais idLocal;
     
     public int getIdItensLocal() {
         return idItensLocal;
@@ -110,14 +111,14 @@ public class Itens_Local implements Serializable {
     /**
      * @return the idLocal
      */
-    public int getIdLocal() {
+    public Locais getIdLocal() {
         return idLocal;
     }
 
     /**
      * @param idLocal the idLocal to set
      */
-    public void setIdLocal(int idLocal) {
+    public void setIdLocal(Locais idLocal) {
         this.idLocal = idLocal;
     }
     

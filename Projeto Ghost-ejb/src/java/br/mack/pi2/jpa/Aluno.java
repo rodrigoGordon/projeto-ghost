@@ -21,17 +21,15 @@ public class Aluno implements Serializable {
     @Column(name = "TIA")
     private int TIA;
     
-    @Column (name = "Unidade_Academica_id_UA", length = 10)
-    private String id_UA;
+    @ManyToOne(fetch = FetchType.LAZY,targetEntity = Unidade_Academica.class)
+    @JoinColumn (name = "Unidade_Academica_id_UA")
+    private Unidade_Academica id_UA;
     @Column (name = "nomeAluno", length = 100)
     private String nomeAluno;
     @Column (name = "curso", length = 50)
     private String curso;
     @Column (name = "periodo", length = 10)
     private String periodo;
-
-    @ManyToOne(fetch = FetchType.LAZY,targetEntity = Unidade_Academica.class)
-    private Unidade_Academica unidadeAcademica;
     
     public int getTIA() {
         return TIA;
@@ -49,11 +47,11 @@ public class Aluno implements Serializable {
         return nomeAluno;
     }
 
-    public String getId_UA() {
+    public Unidade_Academica getId_UA() {
         return id_UA;
     }
 
-    public void setId_UA(String id_UA) {
+    public void setId_UA(Unidade_Academica id_UA) {
         this.id_UA = id_UA;
     }
 
@@ -96,20 +94,6 @@ public class Aluno implements Serializable {
     @Override
     public String toString() {
         return "br.mack.pi2.jpa.Aluno[ id=" + TIA + ", nomeAluno =" + nomeAluno + ", curso=" + curso + ", periodo=" + periodo + " ]";
-    }
-
-    /**
-     * @return the unidadeAcademica
-     */
-    public Unidade_Academica getUnidadeAcademica() {
-        return unidadeAcademica;
-    }
-
-    /**
-     * @param unidadeAcademica the unidadeAcademica to set
-     */
-    public void setUnidadeAcademica(Unidade_Academica unidadeAcademica) {
-        this.unidadeAcademica = unidadeAcademica;
     }
 
 }

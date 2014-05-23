@@ -28,7 +28,9 @@ public class AlunoBean implements AlunoRemote{
     
     EntityManagerFactory  factory;
     
-    @PersistenceContext EntityManager em;
+    /*nao usar o @PersistenceContext senao vai dar pau no deploy
+    fazer da forma que esta no metodo setUp()*/
+    EntityManager em;
     
     public void setUp() {
         factory = Persistence.createEntityManagerFactory("Projeto_Ghost-ejbPU");

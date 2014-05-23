@@ -42,11 +42,13 @@ public class Evento implements Serializable {
     @Column (name = "isPrivado")
     private boolean privado;
 
-    @Column(name="Locais_idLocal")
-    private int idLocal;
+    @ManyToOne (fetch = FetchType.LAZY,targetEntity = Locais.class)
+    @JoinColumn(name="Locais_idLocal")
+    private Locais idLocal;
     
-    @Column(name="responsavel")
-    private int responsavel;
+    @ManyToOne (fetch = FetchType.LAZY,targetEntity = Usuario.class)
+    @JoinColumn(name="Usuario_idUser")
+    private Usuario responsavel;
     
     public int getIdEvento() {
         return idEvento;
@@ -182,28 +184,28 @@ public class Evento implements Serializable {
     /**
      * @return the idLocal
      */
-    public int getIdLocal() {
+    public Locais getIdLocal() {
         return idLocal;
     }
 
     /**
      * @param idLocal the idLocal to set
      */
-    public void setIdLocal(int idLocal) {
+    public void setIdLocal(Locais idLocal) {
         this.idLocal = idLocal;
     }
 
     /**
      * @return the responsavel
      */
-    public int getResponsavel() {
+    public Usuario getResponsavel() {
         return responsavel;
     }
 
     /**
      * @param responsavel the responsavel to set
      */
-    public void setResponsavel(int responsavel) {
+    public void setResponsavel(Usuario responsavel) {
         this.responsavel = responsavel;
     }
     
