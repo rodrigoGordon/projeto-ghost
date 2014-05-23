@@ -48,7 +48,7 @@
         <span>USER:</span><a href="loginGhost.jsp"> Login </a> | <a href="registrarUsuarioGhost.jsp"> 	Registrar </a>
     </div>
 
-   <form id="quick-search" method="get" action="">
+   <form id="quick-search" method="post" action="CarregaLocalInfraServlet">
       <fieldset class="search">
          <label for="qsearch">Search:</label>
          <input class="tbox" id="qsearch" type="text" name="qsearch" value="Search..." title="Start typing and hit ENTER" />

@@ -22,7 +22,7 @@ public class EventoManager {
         return this.eventoDAO.getAll();
     }
     
-    public Evento createContact(Evento evento){
+    public Evento createEvento(Evento evento){
         return this.eventoDAO.create(evento);
     }
     

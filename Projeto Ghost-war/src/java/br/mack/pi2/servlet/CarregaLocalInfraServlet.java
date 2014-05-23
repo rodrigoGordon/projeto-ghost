@@ -4,14 +4,10 @@
  */
 package br.mack.pi2.servlet;
 
-
-import br.mack.pi2.ejb.interfaces.EventoRemote;
+import br.mack.pi2.ejb.interfaces.InfraRemote;
+import br.mack.pi2.ejb.interfaces.LocalRemote;
 import br.mack.pi2.jpa.Evento;
-
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -22,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author 41180283
  */
-public class cadastroEventoGhostServlet extends HttpServlet {
+public class CarregaLocalInfraServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP
@@ -34,23 +30,15 @@ public class cadastroEventoGhostServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    
-    @EJB EventoRemote oEventoCRUD;
-    Evento oEvento;
+    @EJB InfraRemote oInfraCRUD;
+    Evento oInfra;
+    @EJB LocalRemote oLocalCRUD;
+    Evento oLocal;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, Exception {
-        String param = (String) request.getAttribute("submit");
-        if(param.equals("Salvar")){
-            try{
-        oEventoCRUD.insereEvento(oEvento);
-        response.sendRedirect("homeGhost.jsp");
-            }catch(Exception e)
-            {
-                System.out.println("ERRO CAD: ----------- " + e);
-                response.sendRedirect("cadEvento.jsp");
-            }
-        }
-        
+            throws ServletException, IOException {
+          request.setAttribute("infras", oInfraCRUD.Carregar());
+          request.setAttribute("locais", oLocalCRUD.Carregar());
+          response.sendRedirect("cadEvento.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -66,11 +54,7 @@ public class cadastroEventoGhostServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (Exception ex) {
-            Logger.getLogger(cadastroEventoGhostServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**
@@ -85,11 +69,7 @@ public class cadastroEventoGhostServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (Exception ex) {
-            Logger.getLogger(cadastroEventoGhostServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**

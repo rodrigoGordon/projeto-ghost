@@ -7,6 +7,7 @@
 package br.mack.pi2.ejb;
 
 import br.mack.pi2.controller.InfraEstruturaManager;
+import br.mack.pi2.ejb.interfaces.InfraRemote;
 import br.mack.pi2.jpa.Infraestrutura;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -17,7 +18,7 @@ import javax.persistence.EntityManager;
  * @author alvarowf
  */
 @Stateless (mappedName = "infraDAO", name = "infraDAO")
-public class InfraestruturaBean {
+public class InfraestruturaBean implements InfraRemote {
     
     private Infraestrutura infraEstrutura;
     private List<Infraestrutura> infraEstruturaList;
@@ -103,5 +104,15 @@ public class InfraestruturaBean {
      */
     public void setInfraEstruturaManager(InfraEstruturaManager infraEstruturaManager) {
         this.infraEstruturaManager = infraEstruturaManager;
+    }
+
+    @Override
+    public void setUp() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Infraestrutura> Carregar() {
+        return this.infraEstruturaManager.getAllInfraEstrutura(); //To change body of generated methods, choose Tools | Templates.
     }
 }

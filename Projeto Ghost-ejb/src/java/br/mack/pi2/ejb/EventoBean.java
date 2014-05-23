@@ -7,19 +7,18 @@
 package br.mack.pi2.ejb;
 
 import br.mack.pi2.controller.EventoManager;
+import br.mack.pi2.ejb.interfaces.EventoRemote;
 import br.mack.pi2.jpa.Evento;
-import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.PersistenceContext;
 import java.util.List;
+import javax.ejb.Stateless;
+import javax.persistence.EntityManagerFactory;
 
 /**
  *
  * @author alvarowf
  */
 @Stateless (mappedName = "eventoDAO", name = "eventoDAO")
-public class EventoBean {
+public class EventoBean implements EventoRemote {
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
@@ -40,7 +39,7 @@ public class EventoBean {
     
     public String add(){
         try{
-            eventoManager.createContact(getEvento());
+            eventoManager.createEvento(getEvento());
         } catch (Exception e){
             e.printStackTrace();
         }
