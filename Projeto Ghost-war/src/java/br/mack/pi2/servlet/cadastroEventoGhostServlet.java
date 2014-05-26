@@ -42,6 +42,7 @@ public class cadastroEventoGhostServlet extends HttpServlet {
         String param = (String) request.getAttribute("submit");
         if(param.equals("Salvar")){
             try{
+         //request.getAttribute("submit");
         oEventoCRUD.insereEvento(oEvento);
         response.sendRedirect("homeGhost.jsp");
             }catch(Exception e)

@@ -3,12 +3,10 @@
  * and open the template in the editor.
  */
 package br.mack.pi2.servlet;
-import br.mack.pi2.Sessions.UsuarioCRUD;
 import br.mack.pi2.jpa.Usuario;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -30,12 +28,13 @@ public class registrarUsuarioGhostServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    @EJB UsuarioCRUD oUsuarioCRUD;
+    
     Usuario oUsuario;
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Exception {
-       oUsuario  = new Usuario();
+       /*
+        oUsuario  = new Usuario();
        String pagina = "/pesquisaEventos.jsp";
        oUsuario.setNomeUser(request.getParameter("nomeUsuario"));
        oUsuario.setPass(Integer.parseInt(request.getParameter("senhaUsuario")));
@@ -44,6 +43,7 @@ public class registrarUsuarioGhostServlet extends HttpServlet {
        oUsuarioCRUD.insereUsuario(oUsuario);
        request.setAttribute("usuario", oUsuario);
        request.getRequestDispatcher(pagina).forward(request, response);
+       */
     }
    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

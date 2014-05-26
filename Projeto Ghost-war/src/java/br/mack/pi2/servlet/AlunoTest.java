@@ -9,6 +9,7 @@ package br.mack.pi2.servlet;
 import br.mack.pi2.ServiceLocator.ServiceLocator;
 import br.mack.pi2.ejb.interfaces.AlunoRemote;
 import br.mack.pi2.jpa.Aluno;
+import br.mack.pi2.jpa.Unidade_Academica;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Level;
@@ -36,9 +37,10 @@ public class AlunoTest extends HttpServlet {
         } catch (NamingException ex) {
             Logger.getLogger(AlunoTest.class.getName()).log(Level.SEVERE, null, ex);
         }
+        Unidade_Academica ua = new Unidade_Academica();
         aluno.setTIA(1);
         aluno.setNomeAluno("Michel");
-        aluno.setId_UA("FCI");
+        aluno.setId_UA(ua);
         aluno.setPeriodo("Noturno");
         aluno.setCurso("Sistemas");
         try {

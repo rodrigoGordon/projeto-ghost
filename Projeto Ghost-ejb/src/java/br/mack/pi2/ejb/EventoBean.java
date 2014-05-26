@@ -107,6 +107,16 @@ public class EventoBean implements EventoRemote {
         this.eventoList = eventoList;
     }
 
+    @Override
+    public void setUp() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void insereEvento(Evento evento) throws Exception {
+        System.out.print("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     
     
     

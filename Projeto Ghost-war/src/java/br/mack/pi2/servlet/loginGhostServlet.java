@@ -41,6 +41,7 @@ public class loginGhostServlet extends HttpServlet {
        oUsuario.setNomeUser(request.getParameter("nomeUsuario"));
        oUsuario.setPass(Integer.parseInt(request.getParameter("senhaUsuario")));
        
+       /*
        if(oUsuarioCRUD.loginUsuario(oUsuario.getNomeUser(),oUsuario.getPass())){
        request.setAttribute("usuario", oUsuario);
        request.setAttribute("bInscricao", "ok");
@@ -50,6 +51,7 @@ public class loginGhostServlet extends HttpServlet {
        request.setAttribute("bInscricao", "nok");
        request.getRequestDispatcher(pagina).forward(request, response);  
        }
+       */
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
