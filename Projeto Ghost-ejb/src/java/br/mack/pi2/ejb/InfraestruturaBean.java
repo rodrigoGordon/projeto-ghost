@@ -31,45 +31,19 @@ public class InfraestruturaBean implements InfraRemote {
     
     
     EntityManager em;
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
-    
+   
         public String execute() throws Exception {
-        /*
-            try {
-            this.setInfraEstruturaList(getInfraEstruturaManager().findAllInfraEstrutura());
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-        */
+       
         return "*";
     }
     
     public String add(){
-        /*
-        try{
-            infraEstruturaManager.createInfraEstrutura(getInfraEstrutura());
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-        
-        try{
-            this.infraEstruturaList = infraEstruturaManager.findAllInfraEstrutura();
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-        */
+       
         return "*";
     }
     
     public String delete(){
-        /*
-        try{
-            infraEstruturaManager.deleteInfraEstrutura((long)infraEstrutura.getIdEstrutura());
-        } catch(Exception e){
-            e.printStackTrace();
-        }
-        */
+        
         return "*";
     }
 

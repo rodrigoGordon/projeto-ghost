@@ -30,41 +30,17 @@ public class EventoBean implements EventoRemote {
     EntityManager em;
 
         public String execute() throws Exception {
-        /*
-            try {
-            this.setEventoList(eventoManager.findAllEventos());
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-        */
+        
         return "*";
     }
     
     public String add(){
-        /*
-        try{
-            eventoManager.createEvento(getEvento());
-        } catch (Exception e){
-            e.printStackTrace();
-        }
         
-        try{
-            this.eventoList = eventoManager.findAllEventos();
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-        */
         return "*";
     }
     
     public String delete(){
-        /*
-        try{
-            eventoManager.deleteEvento((long)evento.getIdEvento());
-        } catch(Exception e){
-            e.printStackTrace();
-        }
-        */
+      
         return "*";
     }
     
