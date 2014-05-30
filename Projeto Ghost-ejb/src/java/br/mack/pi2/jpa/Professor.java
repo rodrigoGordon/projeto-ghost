@@ -15,6 +15,8 @@ import javax.persistence.*;
  */
 @Entity 
 @Table (name = "professor")
+@NamedQueries({
+    @NamedQuery(name = "Professor.getAll", query = "SELECT a FROM Professor a")})
 public class Professor implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

@@ -6,10 +6,7 @@
 
 package br.mack.pi2.Services;
 
-import br.mack.pi2.ejb.interfaces.AlunoRemote;
-import br.mack.pi2.ejb.interfaces.EventoRemote;
-import br.mack.pi2.ejb.interfaces.InfraRemote;
-import br.mack.pi2.ejb.interfaces.LocalRemote;
+import br.mack.pi2.ejb.interfaces.*;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
@@ -43,14 +40,20 @@ public class ServiceLocator {
     public AlunoRemote getAluno() throws NamingException {
         return (AlunoRemote) lookup("alunoDAO");
     }
-    public InfraRemote getInfra() throws NamingException {
-        return (InfraRemote) lookup("infraDAO");
-    }
-    public LocalRemote getLocal() throws NamingException {
-        return (LocalRemote) lookup("locaisDAO");
-    }
     public EventoRemote getEvento() throws NamingException {
         return (EventoRemote) lookup("eventoDAO");
+    }
+    public InfraestruturaRemote getInfra() throws NamingException {
+        return (InfraestruturaRemote) lookup("infraDAO");
+    }
+    public ItensLocalRemote getItensLocal() throws NamingException {
+        return (ItensLocalRemote) lookup("itenslocDAO");
+    }
+    public ItensDeInfraRemote getItensInfra() throws NamingException {
+        return (ItensDeInfraRemote) lookup("itensinfDAO");
+    }
+    public LocaisRemote getLocal() throws NamingException {
+        return (LocaisRemote) lookup("locaisDAO");
     }
     
 }

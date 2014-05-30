@@ -7,87 +7,60 @@
 package br.mack.pi2.ejb;
 
 
-import br.mack.pi2.ejb.interfaces.InfraRemote;
+import br.mack.pi2.Services.ConectorDAO;
+import br.mack.pi2.ejb.interfaces.InfraestruturaRemote;
 import br.mack.pi2.jpa.Infraestrutura;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
 
 /**
  *
  * @author alvarowf
  */
 @Stateless (mappedName = "infraDAO", name = "infraDAO")
-public class InfraestruturaBean implements InfraRemote {
+public class InfraestruturaBean implements InfraestruturaRemote {
     
-    private Infraestrutura infraEstrutura;
-    private List<Infraestrutura> infraEstruturaList;
+    private EntityManager em;
     
-
-    EntityManagerFactory  factory;
-    
-    
-    EntityManager em;
-   
-        public String execute() throws Exception {
-       
-        return "*";
-    }
-    
-    public String add(){
-       
-        return "*";
-    }
-    
-    public String delete(){
-        
-        return "*";
-    }
-
-    /**
-     * @return the infraEstrutura
-     */
-    public Infraestrutura getInfraEstrutura() {
-        return infraEstrutura;
-    }
-
-    /**
-     * @param infraEstrutura the infraEstrutura to set
-     */
-    public void setInfraEstrutura(Infraestrutura infraEstrutura) {
-        this.infraEstrutura = infraEstrutura;
-    }
-
-    /**
-     * @return the infraEstruturaList
-     */
-    public List<Infraestrutura> getInfraEstruturaList() {
-        return infraEstruturaList;
-    }
-
-    /**
-     * @param infraEstruturaList the infraEstruturaList to set
-     */
-    public void setInfraEstruturaList(List<Infraestrutura> infraEstruturaList) {
-        this.infraEstruturaList = infraEstruturaList;
-    }
-
- 
-    @Override
-    public void setUp() {
-        factory = Persistence.createEntityManagerFactory("Projeto_Ghost-ejbPU");
-        em = factory.createEntityManager(); //To change body of generated methods, choose Tools | Templates.
+    public InfraestruturaBean() {
+        em = ConectorDAO.getInstance().getConnection();
     }
 
     @Override
-    public List<Infraestrutura> Carregar() {
-    
-      Query query = em.createQuery("SELECT e FROM Infraestrutura e");
-      infraEstruturaList = (List<Infraestrutura>) query.getResultList();
-        
-      return infraEstruturaList ;
+    public boolean insereInfra(Infraestrutura infra) {
+        if(em.find(Infraestrutura.class, infra.getIdEstrutura()) == null) {
+            em.getTransaction().begin();
+            em.persist(infra);
+            em.getTransaction().commit();
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean modificaInfra(Infraestrutura infra) {
+        em.getTransaction().begin();
+        em.merge(infra);
+        em.getTransaction().commit();
+        return true;
+    }
+
+    @Override
+    public boolean deletaInfra(Infraestrutura infra) {
+        em.getTransaction().begin();
+        em.remove(infra);
+        em.getTransaction().commit();
+        return true;
+    }
+
+    @Override
+    public Infraestrutura getInfra(int idInfra) {
+        return em.find(Infraestrutura.class, idInfra);
+    }
+
+    @Override
+    public List<Infraestrutura> getAllInfra() {
+        return em.createNamedQuery("Infraestrutura.getAll", Infraestrutura.class).getResultList();
     }
 }

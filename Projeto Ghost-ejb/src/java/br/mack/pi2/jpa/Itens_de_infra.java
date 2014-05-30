@@ -15,6 +15,8 @@ import javax.persistence.*;
  */
 @Entity 
 @Table (name = "itens_de_infra")
+@NamedQueries({
+    @NamedQuery(name = "ItensInfra.getAll", query = "SELECT a FROM Itens_de_infra a")})
 public class Itens_de_infra implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

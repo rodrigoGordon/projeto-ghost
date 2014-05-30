@@ -21,7 +21,7 @@ import javax.persistence.EntityManager;
 @Stateless (mappedName = "eventoDAO", name = "eventoDAO")
 public class EventoBean implements EventoRemote {
 
-    EntityManager em;
+    private EntityManager em;
     
     public EventoBean() {
         em = ConectorDAO.getInstance().getConnection();
@@ -56,8 +56,8 @@ public class EventoBean implements EventoRemote {
     }
 
     @Override
-    public Evento getEvento(Evento evento) {
-        return em.find(Evento.class, evento.getIdEvento());
+    public Evento getEvento(int id) {
+        return em.find(Evento.class, id);
     }
 
     @Override

@@ -5,8 +5,8 @@
 package br.mack.pi2.servlet;
 
 import br.mack.pi2.Services.ServiceLocator;
-import br.mack.pi2.ejb.interfaces.InfraRemote;
-import br.mack.pi2.ejb.interfaces.LocalRemote;
+import br.mack.pi2.ejb.interfaces.InfraestruturaRemote;
+import br.mack.pi2.ejb.interfaces.LocaisRemote;
 import br.mack.pi2.jpa.Infraestrutura;
 import br.mack.pi2.jpa.Locais;
 import java.io.IOException;
@@ -35,9 +35,9 @@ public class CarregaLocalInfraServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    @EJB InfraRemote oInfraCRUD;
+    @EJB InfraestruturaRemote oInfraCRUD;
     Infraestrutura oInfra;
-    @EJB LocalRemote oLocalCRUD;
+    @EJB LocaisRemote oLocalCRUD;
     Locais oLocal;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

@@ -15,6 +15,8 @@ import javax.persistence.*;
  */
 @Entity 
 @Table (name = "itens_local")
+@NamedQueries({
+    @NamedQuery(name = "ItensLocal.getAll", query = "SELECT a FROM Itens_Local a")})
 public class Itens_Local implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

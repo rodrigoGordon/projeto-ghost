@@ -14,7 +14,10 @@ import javax.ejb.Remote;
  * @author 41180283
  */
 @Remote
-public interface LocalRemote {
-    public void setUp();
-    public List<Locais> Carregar();
+public interface LocaisRemote {
+    public boolean insereLocal(Locais local);
+    public boolean modificaLocal(Locais local);
+    public boolean deletaLocal(Locais local);
+    public Locais getLocal(int id);
+    public List<Locais> getAllLocais();
 }

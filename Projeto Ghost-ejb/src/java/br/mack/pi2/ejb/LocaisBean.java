@@ -7,58 +7,62 @@
 package br.mack.pi2.ejb;
 
 
-import br.mack.pi2.ejb.interfaces.LocalRemote;
+import br.mack.pi2.Services.ConectorDAO;
+import br.mack.pi2.ejb.interfaces.LocaisRemote;
 import br.mack.pi2.jpa.Locais;
 import java.util.List;
-
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
 
 /**
  *
  * @author alvarowf
  */
 @Stateless (mappedName = "locaisDAO", name = "locaisDAO")
-public class LocaisBean implements LocalRemote {
+public class LocaisBean implements LocaisRemote {
    
-    private Locais local;
-    private List<Locais>localList;
-
-    EntityManagerFactory  factory;
-    
     EntityManager em;
-   
     
-     @Override
-     public void setUp() {
-        factory = Persistence.createEntityManagerFactory("Projeto_Ghost-ejbPU");
-        em = factory.createEntityManager();
+    public LocaisBean() {
+        em = ConectorDAO.getInstance().getConnection();
     }
 
     @Override
-    public List<Locais> Carregar() {
-        Query query = em.createQuery("SELECT e FROM Locais e");
-        localList = (List<Locais>) query.getResultList();
-
-        return localList;
+    public boolean insereLocal(Locais local) {
+        
+        if(em.find(Locais.class, local.getIdLocal()) == null) {
+            em.getTransaction().begin();
+            em.persist(local);
+            em.getTransaction().commit();
+            return true;
+        }
+        return false;
     }
 
-    /**
-     * @return the local
-     */
-    public Locais getLocal() {
-        return local;
+    @Override
+    public boolean modificaLocal(Locais local) {
+        em.getTransaction().begin();
+        em.merge(local);
+        em.getTransaction().commit();
+        return true;
     }
 
-    /**
-     * @param local the local to set
-     */
-    public void setLocal(Locais local) {
-        this.local = local;
+    @Override
+    public boolean deletaLocal(Locais local) {
+        em.getTransaction().begin();
+        em.remove(local);
+        em.getTransaction().commit();
+        return true;
+    }
+
+    @Override
+    public Locais getLocal(int id) {
+        return em.find(Locais.class, id);
+    }
+
+    @Override
+    public List<Locais> getAllLocais() {
+        return em.createNamedQuery("Locais.getAll", Locais.class).getResultList();
     }
     
-  
 }
