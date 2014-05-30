@@ -4,7 +4,7 @@
  */
 package br.mack.pi2.servlet;
 
-import br.mack.pi2.ServiceLocator.ServiceLocator;
+import br.mack.pi2.Services.ServiceLocator;
 import br.mack.pi2.ejb.interfaces.InfraRemote;
 import br.mack.pi2.ejb.interfaces.LocalRemote;
 import br.mack.pi2.jpa.Infraestrutura;

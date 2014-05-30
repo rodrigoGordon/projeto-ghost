@@ -5,6 +5,7 @@
 package br.mack.pi2.ejb.interfaces;
 
 import br.mack.pi2.jpa.Aluno;
+import java.util.List;
 import javax.ejb.Remote;
 
 /**
@@ -13,6 +14,9 @@ import javax.ejb.Remote;
  */
 @Remote
 public interface AlunoRemote {
-    public void setUp();
-    public void insereAluno(Aluno aluno) throws Exception;
+    public boolean insereAluno(Aluno aluno) throws Exception;
+    public boolean modificaAluno(Aluno aluno) throws Exception;
+    public boolean deletaAluno(Aluno aluno) throws Exception;
+    public Aluno getAluno(int tia) throws Exception;
+    public List<Aluno> getAllAluno() throws Exception;
 }

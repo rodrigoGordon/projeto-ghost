@@ -5,6 +5,7 @@
 package br.mack.pi2.ejb;
 
 
+import br.mack.pi2.Services.ConectorDAO;
 import br.mack.pi2.ejb.interfaces.AlunoRemote;
 import br.mack.pi2.jpa.Aluno;
 import java.util.List;
@@ -20,107 +21,51 @@ import javax.persistence.Persistence;
  */
 @Stateless (mappedName = "alunoDAO", name = "alunoDAO")
 public class AlunoBean implements AlunoRemote{
-    
-    private Aluno aluno;
-    private List<Aluno>alunoList;
 
-    
-    
-    EntityManagerFactory  factory;
-    
     /*nao usar o @PersistenceContext senao vai dar pau no deploy
-    fazer da forma que esta no metodo setUp()*/
+    fazer da forma que esta no construtor*/
     EntityManager em;
     
+    public AlunoBean() {
+        em = ConectorDAO.getInstance().getConnection();
+    }
+    
     @Override
-    public void setUp() {
-        factory = Persistence.createEntityManagerFactory("Projeto_Ghost-ejbPU");
-        em = factory.createEntityManager();
+    public boolean insereAluno(Aluno aluno) throws Exception {
+        
+        if (em.find(Aluno.class, aluno.getTIA()) == null) {        
+            em.getTransaction().begin();
+            em.persist(aluno);
+            em.getTransaction().commit();
+            return true;
+        }
+        return false;
     }
+
     @Override
-    public void insereAluno(Aluno aluno){
-        
-        aluno.getTIA();
-        aluno.getNomeAluno();
-        aluno.getCurso();
-        aluno.getPeriodo();
-        aluno.getId_UA();
-        
-        em.persist(aluno);
-                
-    }
-    
-    public String execute() throws Exception {
-        /*
-        try {
-           // this.alunoList = alunoManager.findAllAlunos();
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-        */
-        return "*";
-    }
-    
-    public String add(){
-        /*
-        try{
-            alunoManager.createContact(getAluno());
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-        
-        try{
-            this.alunoList = alunoManager.findAllAlunos();
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-        */
-        return "*";
-    }
-    
-    public String delete(){
-        /*
-        try{
-            alunoManager.deleteAluno((long)aluno.getTIA());
-        } catch(Exception e){
-            e.printStackTrace();
-        }
-        */
-        return "*";
-    }
-    
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
-
-    /**
-     * @return the alunoList
-     */
-    public List<Aluno> getAlunoList() {
-        return alunoList;
+    public boolean modificaAluno(Aluno aluno) throws Exception {
+        em.getTransaction().begin();
+        em.merge(aluno);
+        em.getTransaction().commit();
+        return true;
     }
 
-    /**
-     * @param alunoList the alunoList to set
-     */
-    public void setAlunoList(List<Aluno> alunoList) {
-        this.alunoList = alunoList;
+    @Override
+    public boolean deletaAluno(Aluno aluno) throws Exception {
+        em.getTransaction().begin();
+        em.remove(aluno);
+        em.getTransaction().commit();
+        return true;
     }
 
-  
-    /**
-     * @return the aluno
-     */
-    public Aluno getAluno() {
-        return aluno;
+    @Override
+    public Aluno getAluno(int tia) throws Exception {
+        return em.find(Aluno.class, tia);
     }
 
-    /**
-     * @param aluno the aluno to set
-     */
-    public void setAluno(Aluno aluno) {
-        this.aluno = aluno;
+    @Override
+    public List<Aluno> getAllAluno() throws Exception {
+        return em.createNamedQuery("Aluno.getAll", Aluno.class).getResultList();
     }
     
-    
-
 }

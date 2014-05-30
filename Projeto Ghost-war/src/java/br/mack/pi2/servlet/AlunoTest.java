@@ -6,7 +6,7 @@
 
 package br.mack.pi2.servlet;
 
-import br.mack.pi2.ServiceLocator.ServiceLocator;
+import br.mack.pi2.Services.ServiceLocator;
 import br.mack.pi2.ejb.interfaces.AlunoRemote;
 import br.mack.pi2.jpa.Aluno;
 import br.mack.pi2.jpa.Unidade_Academica;

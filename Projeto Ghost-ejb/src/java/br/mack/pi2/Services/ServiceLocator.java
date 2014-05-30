@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package br.mack.pi2.ServiceLocator;
+package br.mack.pi2.Services;
 
 import br.mack.pi2.ejb.interfaces.AlunoRemote;
 import br.mack.pi2.ejb.interfaces.EventoRemote;
