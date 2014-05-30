@@ -6,12 +6,15 @@
 
 package br.mack.pi2.ejb;
 
-import br.mack.pi2.controller.InfraEstruturaManager;
+
 import br.mack.pi2.ejb.interfaces.InfraRemote;
 import br.mack.pi2.jpa.Infraestrutura;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 /**
  *
@@ -22,24 +25,28 @@ public class InfraestruturaBean implements InfraRemote {
     
     private Infraestrutura infraEstrutura;
     private List<Infraestrutura> infraEstruturaList;
-    private InfraEstruturaManager infraEstruturaManager;
     
-    EntityManager entity;
 
+    EntityManagerFactory  factory;
+    
+    
+    EntityManager em;
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
     
         public String execute() throws Exception {
-        try {
+        /*
+            try {
             this.setInfraEstruturaList(getInfraEstruturaManager().findAllInfraEstrutura());
         } catch (Exception e){
             e.printStackTrace();
         }
-        
+        */
         return "*";
     }
     
     public String add(){
+        /*
         try{
             infraEstruturaManager.createInfraEstrutura(getInfraEstrutura());
         } catch (Exception e){
@@ -51,16 +58,18 @@ public class InfraestruturaBean implements InfraRemote {
         } catch (Exception e){
             e.printStackTrace();
         }
-        
+        */
         return "*";
     }
     
     public String delete(){
+        /*
         try{
             infraEstruturaManager.deleteInfraEstrutura((long)infraEstrutura.getIdEstrutura());
         } catch(Exception e){
             e.printStackTrace();
         }
+        */
         return "*";
     }
 
@@ -92,27 +101,19 @@ public class InfraestruturaBean implements InfraRemote {
         this.infraEstruturaList = infraEstruturaList;
     }
 
-    /**
-     * @return the infraEstruturaManager
-     */
-    public InfraEstruturaManager getInfraEstruturaManager() {
-        return infraEstruturaManager;
-    }
-
-    /**
-     * @param infraEstruturaManager the infraEstruturaManager to set
-     */
-    public void setInfraEstruturaManager(InfraEstruturaManager infraEstruturaManager) {
-        this.infraEstruturaManager = infraEstruturaManager;
-    }
-
+ 
     @Override
     public void setUp() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        factory = Persistence.createEntityManagerFactory("Projeto_Ghost-ejbPU");
+        em = factory.createEntityManager(); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public List<Infraestrutura> Carregar() {
-        return this.infraEstruturaManager.getAllInfraEstrutura(); //To change body of generated methods, choose Tools | Templates.
+    
+      Query query = em.createQuery("SELECT e FROM Infraestrutura e");
+      infraEstruturaList = (List<Infraestrutura>) query.getResultList();
+        
+      return infraEstruturaList ;
     }
 }

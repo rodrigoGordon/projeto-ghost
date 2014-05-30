@@ -7,8 +7,6 @@
 package br.mack.pi2.jpa;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import javax.persistence.*;
 
 /**
@@ -16,7 +14,7 @@ import javax.persistence.*;
  * @author MichelOh
  */
 @Entity 
-@Table (name = "locais")
+@Table (name = "Locais")
 public class Locais implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

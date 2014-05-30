@@ -4,11 +4,16 @@
  */
 package br.mack.pi2.servlet;
 
+import br.mack.pi2.ServiceLocator.ServiceLocator;
 import br.mack.pi2.ejb.interfaces.InfraRemote;
 import br.mack.pi2.ejb.interfaces.LocalRemote;
-import br.mack.pi2.jpa.Evento;
+import br.mack.pi2.jpa.Infraestrutura;
+import br.mack.pi2.jpa.Locais;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
+import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -31,12 +36,21 @@ public class CarregaLocalInfraServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @EJB InfraRemote oInfraCRUD;
-    Evento oInfra;
+    Infraestrutura oInfra;
     @EJB LocalRemote oLocalCRUD;
-    Evento oLocal;
+    Locais oLocal;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-          request.setAttribute("infras", oInfraCRUD.Carregar());
+        
+           try {
+            //oInfraCRUD = ServiceLocator.getinstance().getInfra();
+            oLocalCRUD = ServiceLocator.getinstance().getLocal();
+        } catch (NamingException ex) {
+           System.out.println("Erro __________________ : " + ex);
+        }
+        
+         
+         // request.setAttribute("infras", oInfraCRUD.Carregar());
           request.setAttribute("locais", oLocalCRUD.Carregar());
           response.sendRedirect("cadEvento.jsp");
     }

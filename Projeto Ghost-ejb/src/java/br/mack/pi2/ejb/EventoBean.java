@@ -6,12 +6,14 @@
 
 package br.mack.pi2.ejb;
 
-import br.mack.pi2.controller.EventoManager;
+
 import br.mack.pi2.ejb.interfaces.EventoRemote;
 import br.mack.pi2.jpa.Evento;
 import java.util.List;
 import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 /**
  *
@@ -25,19 +27,21 @@ public class EventoBean implements EventoRemote {
     private Evento evento;
     private List<Evento> eventoList;
     EntityManagerFactory  factory;
-    private EventoManager eventoManager;
+    EntityManager em;
 
         public String execute() throws Exception {
-        try {
+        /*
+            try {
             this.setEventoList(eventoManager.findAllEventos());
         } catch (Exception e){
             e.printStackTrace();
         }
-        
+        */
         return "*";
     }
     
     public String add(){
+        /*
         try{
             eventoManager.createEvento(getEvento());
         } catch (Exception e){
@@ -49,16 +53,18 @@ public class EventoBean implements EventoRemote {
         } catch (Exception e){
             e.printStackTrace();
         }
-        
+        */
         return "*";
     }
     
     public String delete(){
+        /*
         try{
             eventoManager.deleteEvento((long)evento.getIdEvento());
         } catch(Exception e){
             e.printStackTrace();
         }
+        */
         return "*";
     }
     
@@ -79,20 +85,7 @@ public class EventoBean implements EventoRemote {
         this.evento = evento;
     }
 
-    /**
-     * @return the eventoManager
-     */
-    public EventoManager getEventoManager() {
-        return eventoManager;
-    }
-
-    /**
-     * @param eventoManager the eventoManager to set
-     */
-    public void setEventoManager(EventoManager eventoManager) {
-        this.eventoManager = eventoManager;
-    }
-
+ 
     /**
      * @return the eventoList
      */
@@ -109,7 +102,8 @@ public class EventoBean implements EventoRemote {
 
     @Override
     public void setUp() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        factory = Persistence.createEntityManagerFactory("Projeto_Ghost-ejbPU");
+        em = factory.createEntityManager(); 
     }
 
     @Override
