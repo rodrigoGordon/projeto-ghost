@@ -5,7 +5,7 @@
 package br.mack.pi2.ejb.interfaces;
 
 import br.mack.pi2.jpa.Evento;
-
+import java.util.List;
 import javax.ejb.Remote;
 
 /**
@@ -14,7 +14,9 @@ import javax.ejb.Remote;
  */
 @Remote
 public interface EventoRemote {
-    public void setUp();
-    public void insereEvento(Evento evento) throws Exception;
-    
+    public boolean insereEvento(Evento evento);
+    public boolean modificaEvento(Evento evento);
+    public boolean deletaEvento(Evento evento);
+    public Evento getEvento(Evento evento);
+    public List<Evento> getAllEvento();
 }

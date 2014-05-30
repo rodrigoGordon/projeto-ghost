@@ -14,9 +14,9 @@ import javax.ejb.Remote;
  */
 @Remote
 public interface AlunoRemote {
-    public boolean insereAluno(Aluno aluno) throws Exception;
-    public boolean modificaAluno(Aluno aluno) throws Exception;
-    public boolean deletaAluno(Aluno aluno) throws Exception;
-    public Aluno getAluno(int tia) throws Exception;
-    public List<Aluno> getAllAluno() throws Exception;
+    public boolean insereAluno(Aluno aluno);
+    public boolean modificaAluno(Aluno aluno);
+    public boolean deletaAluno(Aluno aluno);
+    public Aluno getAluno(int tia);
+    public List<Aluno> getAllAluno();
 }

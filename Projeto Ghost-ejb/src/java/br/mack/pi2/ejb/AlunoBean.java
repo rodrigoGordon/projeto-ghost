@@ -11,8 +11,6 @@ import br.mack.pi2.jpa.Aluno;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
 
 /**
@@ -31,7 +29,7 @@ public class AlunoBean implements AlunoRemote{
     }
     
     @Override
-    public boolean insereAluno(Aluno aluno) throws Exception {
+    public boolean insereAluno(Aluno aluno) {
         
         if (em.find(Aluno.class, aluno.getTIA()) == null) {        
             em.getTransaction().begin();
@@ -43,7 +41,7 @@ public class AlunoBean implements AlunoRemote{
     }
 
     @Override
-    public boolean modificaAluno(Aluno aluno) throws Exception {
+    public boolean modificaAluno(Aluno aluno) {
         em.getTransaction().begin();
         em.merge(aluno);
         em.getTransaction().commit();
@@ -51,7 +49,7 @@ public class AlunoBean implements AlunoRemote{
     }
 
     @Override
-    public boolean deletaAluno(Aluno aluno) throws Exception {
+    public boolean deletaAluno(Aluno aluno) {
         em.getTransaction().begin();
         em.remove(aluno);
         em.getTransaction().commit();
@@ -59,12 +57,12 @@ public class AlunoBean implements AlunoRemote{
     }
 
     @Override
-    public Aluno getAluno(int tia) throws Exception {
+    public Aluno getAluno(int tia) {
         return em.find(Aluno.class, tia);
     }
 
     @Override
-    public List<Aluno> getAllAluno() throws Exception {
+    public List<Aluno> getAllAluno() {
         return em.createNamedQuery("Aluno.getAll", Aluno.class).getResultList();
     }
     

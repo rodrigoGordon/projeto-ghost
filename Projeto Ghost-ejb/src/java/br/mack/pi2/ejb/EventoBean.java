@@ -7,13 +7,12 @@
 package br.mack.pi2.ejb;
 
 
+import br.mack.pi2.Services.ConectorDAO;
 import br.mack.pi2.ejb.interfaces.EventoRemote;
 import br.mack.pi2.jpa.Evento;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
 /**
  *
@@ -22,72 +21,48 @@ import javax.persistence.Persistence;
 @Stateless (mappedName = "eventoDAO", name = "eventoDAO")
 public class EventoBean implements EventoRemote {
 
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
-    private Evento evento;
-    private List<Evento> eventoList;
-    EntityManagerFactory  factory;
     EntityManager em;
-
-        public String execute() throws Exception {
-        
-        return "*";
-    }
     
-    public String add(){
-        
-        return "*";
-    }
-    
-    public String delete(){
-      
-        return "*";
-    }
-    
-    
-    
-    
-    /**
-     * @return the evento
-     */
-    public Evento getEvento() {
-        return evento;
-    }
-
-    /**
-     * @param evento the evento to set
-     */
-    public void setEvento(Evento evento) {
-        this.evento = evento;
-    }
-
- 
-    /**
-     * @return the eventoList
-     */
-    public List<Evento> getEventoList() {
-        return eventoList;
-    }
-
-    /**
-     * @param eventoList the eventoList to set
-     */
-    public void setEventoList(List<Evento> eventoList) {
-        this.eventoList = eventoList;
+    public EventoBean() {
+        em = ConectorDAO.getInstance().getConnection();
     }
 
     @Override
-    public void setUp() {
-        factory = Persistence.createEntityManagerFactory("Projeto_Ghost-ejbPU");
-        em = factory.createEntityManager(); 
+    public boolean insereEvento(Evento evento) {
+        
+        if(em.find(Evento.class, evento.getIdEvento()) == null) {
+            em.getTransaction().begin();
+            em.persist(evento);
+            em.getTransaction().commit();
+            return true;
+        }
+        return false;
     }
 
     @Override
-    public void insereEvento(Evento evento) throws Exception {
-        System.out.print("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean modificaEvento(Evento evento) {
+        em.getTransaction().begin();
+        em.merge(evento);
+        em.getTransaction().commit();
+        return true;
     }
 
-    
-    
+    @Override
+    public boolean deletaEvento(Evento evento) {
+        em.getTransaction().begin();
+        em.remove(evento);
+        em.getTransaction().commit();
+        return true;
+    }
+
+    @Override
+    public Evento getEvento(Evento evento) {
+        return em.find(Evento.class, evento.getIdEvento());
+    }
+
+    @Override
+    public List<Evento> getAllEvento() {
+        return em.createNamedQuery("Evento.getAll", Evento.class).getResultList();
+    }
     
 }
