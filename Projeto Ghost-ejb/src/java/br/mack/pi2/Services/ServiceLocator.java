@@ -55,5 +55,22 @@ public class ServiceLocator {
     public LocaisRemote getLocal() throws NamingException {
         return (LocaisRemote) lookup("locaisDAO");
     }
-    
+    public NotificacaoRemote getNotificacao() throws NamingException {
+        return (NotificacaoRemote) lookup("notifDAO");
+    }
+    public ParticipantesRemote getParticipantes() throws NamingException {
+        return (ParticipantesRemote) lookup("particDAO");
+    }
+    public PermissaoRemote getPermissao() throws NamingException {
+        return (PermissaoRemote) lookup("permissaoDAO");
+    }
+    public ProfessorRemote getProfessor() throws NamingException {
+        return (ProfessorRemote) lookup("professorDAO");
+    }
+    public RestricaoEventoRemote getRestricao() throws NamingException {
+        return (RestricaoEventoRemote) lookup("restricaoDAO");
+    }
+    public UnidadeAcademicaRemote getUA() throws NamingException {
+        return (UnidadeAcademicaRemote) lookup("UADAO");
+    }
 }
