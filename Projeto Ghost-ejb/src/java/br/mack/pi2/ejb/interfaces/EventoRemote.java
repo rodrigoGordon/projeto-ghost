@@ -19,4 +19,5 @@ public interface EventoRemote {
     public boolean deletaEvento(Evento evento);
     public Evento getEvento(int id);
     public List<Evento> getAllEvento();
+    public List<Evento> getDetalhesEvento(int idEvento);
 }

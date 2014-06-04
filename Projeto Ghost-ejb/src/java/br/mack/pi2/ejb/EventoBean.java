@@ -10,9 +10,11 @@ package br.mack.pi2.ejb;
 import br.mack.pi2.Services.ConectorDAO;
 import br.mack.pi2.ejb.interfaces.EventoRemote;
 import br.mack.pi2.jpa.Evento;
+import br.mack.pi2.jpa.Locais;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 /**
  *
@@ -31,6 +33,7 @@ public class EventoBean implements EventoRemote {
     public boolean insereEvento(Evento evento) {
         
         if(em.find(Evento.class, evento.getIdEvento()) == null) {
+            
             em.getTransaction().begin();
             em.persist(evento);
             em.getTransaction().commit();
@@ -63,6 +66,16 @@ public class EventoBean implements EventoRemote {
     @Override
     public List<Evento> getAllEvento() {
         return em.createNamedQuery("Evento.getAll", Evento.class).getResultList();
+    }
+
+    @Override
+    public List<Evento> getDetalhesEvento(int idEvento) {
+       
+       List<Evento> oList = null;
+       Query query = em.createQuery("SELECT e FROM Evento e JOIN e.idLocal a where e.idEvento=" + idEvento);
+       oList = (List<Evento>)query.getResultList();
+       
+       return oList;
     }
     
 }

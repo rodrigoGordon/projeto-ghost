@@ -22,7 +22,8 @@ import javax.persistence.*;
 public class Usuario implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    private int idLogin;
+    @Column (name = "idUser")
+    private int idUser;
     
     @Column (name = "nomeUser", length = 10)
     private String nomeUser;
@@ -45,29 +46,29 @@ public class Usuario implements Serializable {
     @JoinColumn (name = "DRT", nullable = true)
     private Professor professor;
     
-    public int getIdLogin() {
-        return idLogin;
+    public int getIdUser() {
+        return idUser;
     }
 
-    public void setIdLogin(int idLogin) {
-        this.idLogin = idLogin;
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (int) idLogin;
+        hash += (int) idUser;
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the idLogin fields are not set
+        // TODO: Warning - this method won't work in the case the idUser fields are not set
         if (!(object instanceof Usuario)) {
             return false;
         }
         Usuario other = (Usuario) object;
-        if (this.idLogin != other.idLogin) {
+        if (this.idUser != other.idUser) {
             return false;
         }
         return true;
@@ -75,7 +76,7 @@ public class Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "br.mack.pi2.jpa.Usuario[ id=" + idLogin + " ]";
+        return "br.mack.pi2.jpa.Usuario[ id=" + idUser + " ]";
     }
 
     /**

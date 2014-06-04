@@ -1,27 +1,36 @@
 
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html" %>
+
 <!DOCTYPE html>
  <html> 
 
 <head>
-
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <meta charset="utf-8"/>
+ 
     <meta name="description" content="">
     <meta name="author" content="">
 
     <title>Ghost Project</title>
 
     <link rel="stylesheet" type="text/css" media="screen" href="css/coolblue.css" />
+  
+	<link rel="shortcut icon" href="images/favicon.ico" />
 
-    <!--[if lt IE 9]>
-	    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+	<!-- Grid CSS File (only needed for demo page) -->
+	<link rel="stylesheet" href="css/paragridma.css">
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="js/jquery-1.6.1.min.js"><\/script>')</script>
+	<!-- Core CSS File. The CSS code needed to make eventCalendar works -->
+	<link rel="stylesheet" href="css/eventCalendar.css">
 
+	<!-- Theme CSS file: it makes eventCalendar nicer -->
+	<link rel="stylesheet" href="css/eventCalendar_theme_responsive.css">
+
+	<!--<script src="js/jquery.js" type="text/javascript"></script>-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
+
+      <!--  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script> -->
+        <script>window.jQuery || document.write('<script src="js/jquery-1.6.1.min.js"><\/script>')</script>
+        
     <script src="js/scrollToTop.js"></script>
 
 </head>
@@ -47,15 +56,7 @@
     <div class="subscribe">
         <span>USER:</span><a href="loginGhost.jsp"> Login </a> | <a href="registrarUsuarioGhost.jsp"> 	Registrar </a>
     </div>
-
-   <form id="quick-search" method="get" action="">
-      <fieldset class="search">
-         <label for="qsearch">Search:</label>
-         <input class="tbox" id="qsearch" type="text" name="qsearch" value="Search..." title="Start typing and hit ENTER" />
-         <button class="btn" title="Submit Search">Search</button>
-      </fieldset>
-   </form>
-
+ 
 <!--/header-->
 </header>
 </div>
@@ -71,42 +72,37 @@
 
       	    <article class="post">
 
-      		    <div class="primary">
+                <div class="container">
+                    <div class="row">
+                        <div class="g8">
+                            <h2 class="h6">Eventos Mackenzie</h2>
+                            <p class="demoDesc"></p>
+                            <div id="eventCalendarLocale"></div>
+                            <script>
+                                    $(document).ready(function() {
+                                            $("#eventCalendarLocale").eventCalendar({
+                                                    eventsjson: 'json/eventosMack.json',
+                                                    
+                                                    monthNames: [ "Janeiro", "Fevereiro", "MarÁo", "Abril", "Maio", "Junho",
+                                                            "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro" ],
+                                                    dayNames: [ 'Domingo','Segunda','TerÁa','Quarta',
+                                                            'Quinta','Sexta','S·bado' ],
+                                                    dayNamesShort: [ 'Dom','Seg','Ter','Qua', 'Qui','Sex','Sab' ],
+                                                    txt_noEvents: "N„o existem eventos neste perÌodo",
+                                                    txt_SpecificEvents_prev: "",
+                                                    txt_SpecificEvents_after: "Eventos:",
+                                                    txt_next: "PrÛximo",
+                                                    txt_prev: "Anterior",
+                                                    txt_NextEvents: "PrÛximos eventos:",
+                                                    txt_GoToEventUrl: "Detalhes do evento"
+                                            });
+                                    });
+                            </script>
 
-                    <h2><a href="pesquisaEventos.jsp">T√çTULO EVENTO</a></h2>
+                        </div>
 
-                    
-
-               	    <div class="image-section">
-              		    <img src="images/img-post.jpg" alt="image post" height="206" width="498"/>
-         	        </div>
-
-                    <p>Detalhes do Evento
-					Le Lorem Ipsum est simplement du faux texte employ√© dans la composition et la mise en page avant impression. 
-					Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les ann√©es 1500, quand un peintre anonyme assembla 
-					ensemble des morceaux de texte pour r√©aliser un livre sp√©cimen de polices de texte.
-					
-                    </p>
-
-                    <p><a class="more" href="pesquisaEventos.jsp">Detalhes &raquo;</a></p>
-
+                    </div>	
                 </div>
-
-                <aside>
-
-            	    <p class="dateinfo">JAN<span>31</span></p>
-
-               	    <div class="post-meta">
-                  	    <h4>EVENTO Info</h4>
-                     	<ul>
-                           <li class="comment"><a href="#">Titulo do evento</a></li>
-                           <li class="time"><a href="#">12:30 PM</a></li>
-                           <li class="user"><a href="#">FACULDADE</a></li>
-                           <li class="permalink"><a href="#">LOCAL</a></li>
-                        </ul>
-					</div>
-
-                </aside>
 
 		    </article>
 
@@ -118,36 +114,11 @@
 
 			<div class="sidemenu">
 
-				<h3>Manuten√ß√£o Mackenzie</h3>
+				<h3>ManutenÁ„o Mackenzie</h3>
                 <ul>
 					<li><a href="cadItensLocal.jsp">Locais</a></li>
 					<li><a href="cadInfraEstrutura.jsp">Infra</a></li>
-					<li><a href="cadEvento.jsp">Evento</a></li>
-					
-				</ul>
 
-			</div>
-
-
-            <div class="sidemenu popular">
-
-				<h3>Proximos Eventos</h3>
-				<ul>
-			   	<li><a href="index.html">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-						<span>Posted on December 22, 2010</span></a>
-					</li>
-                <li><a href="index.html">Cras fringilla magna. Phasellus suscipit.
-						<span>Posted on December 20, 2010</span></a>
-					</li>
-                <li><a href="index.html">Morbi tincidunt, orci ac convallis aliquam.
-						<span>Posted on December 15, 2010</span></a>
-					</li>
-                <li><a href="index.html">Ipsum dolor sit amet, consectetuer adipiscing elit.
-						<span>Posted on December 14, 2010</span></a>
-					</li>
-                <li><a href="index.html">Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius lorem
-						<span>Posted on December 12, 2010</span></a>
-					</li>
 				</ul>
 
 			</div>
@@ -194,7 +165,7 @@
 
 	<p class="footer-right">
 	   	<a href="homeGhost.jsp">Home</a> |
-		<a href="homeGhost.jsp">Eventos</a> |
+		<a href="CarregaEventosJson">Eventos</a> |
         <a href="#top" class="back-to-top">Voltar ao topo</a>
     </p>
 
@@ -202,5 +173,6 @@
 </footer>
 
 </body>
+<script src="js/jquery.eventCalendar.js" type="text/javascript"></script>
 </html>
 

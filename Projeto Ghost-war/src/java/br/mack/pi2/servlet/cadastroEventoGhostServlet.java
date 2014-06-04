@@ -7,8 +7,13 @@ package br.mack.pi2.servlet;
 
 import br.mack.pi2.ejb.interfaces.EventoRemote;
 import br.mack.pi2.jpa.Evento;
+import br.mack.pi2.jpa.Locais;
+import br.mack.pi2.jpa.Usuario;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -24,46 +29,59 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class cadastroEventoGhostServlet extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP
-     * <code>GET</code> and
-     * <code>POST</code> methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+
     
     @EJB EventoRemote oEventoCRUD;
-    Evento oEvento;
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Exception {
-        String param = (String) request.getAttribute("submit");
-        if(param.equals("Salvar")){
-            try{
-         //request.getAttribute("submit");
-        oEventoCRUD.insereEvento(oEvento);
-        response.sendRedirect("homeGhost.jsp");
-            }catch(Exception e)
-            {
-                System.out.println("ERRO CAD: ----------- " + e);
-                response.sendRedirect("cadEvento.jsp");
-            }
-        }
+
+        Evento oEvento = new Evento();
+
+        oEvento.setNomeEvento(request.getParameter("nomeEvento"));
+        oEvento.setDescEvento(request.getParameter("descEvento"));
         
+        DateFormat df = new SimpleDateFormat("MM/dd/yyyy"); 
+       
+        try {
+          
+            oEvento.setDtInicio(new java.sql.Date(df.parse(request.getParameter("from")).getTime()));
+            oEvento.setDtFim(new java.sql.Date(df.parse(request.getParameter("to")).getTime()));
+        } catch (ParseException e) {
+            System.out.println("ERRO COM DATA" + e);
+            response.sendRedirect("homeGhost.jsp");
+        }
+	
+
+        Locais oLocal = new Locais();
+        oLocal.setIdLocal(Integer.parseInt(request.getParameter("cmbLocalEvento")));
+        oEvento.setIdLocal(oLocal);
+        
+        Usuario oUsuarioResponsavel = new Usuario();
+        oUsuarioResponsavel.setIdUser(1);
+        oEvento.setResponsavel(oUsuarioResponsavel);
+        
+        //Verifica resp sim(0) ou nao(1)
+        oEvento.setInscricao((Integer.parseInt((String)request.getParameter("bInscricao")) < 1));
+        oEvento.setItemAdd((Integer.parseInt((String)request.getParameter("bItensAdicionais")) < 1));
+        oEvento.setPrivado((Integer.parseInt((String)request.getParameter("bEventoExclusivo")) < 1));
+        try{
+           oEventoCRUD.insereEvento(oEvento);
+        }catch(Exception e)
+        {
+          System.out.println("ERRO DE CAD   " + e);
+          response.sendRedirect("homeGhost.jsp");  
+        }
+        //inserir Restricao Evento com if
+       if((Integer.parseInt((String)request.getParameter("bEventoExclusivo")) < 1))
+           {
+            System.out.println("Almost there");
+            response.sendRedirect("pesquisaEventos.jsp");
+           }
+         
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP
-     * <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+  
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -74,15 +92,7 @@ public class cadastroEventoGhostServlet extends HttpServlet {
         }
     }
 
-    /**
-     * Handles the HTTP
-     * <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+  
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -93,11 +103,7 @@ public class cadastroEventoGhostServlet extends HttpServlet {
         }
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
+   
     @Override
     public String getServletInfo() {
         return "Short description";

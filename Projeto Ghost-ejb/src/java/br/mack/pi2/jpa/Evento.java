@@ -7,6 +7,9 @@
 package br.mack.pi2.jpa;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.persistence.*;
 
@@ -21,7 +24,7 @@ import javax.persistence.*;
 public class Evento implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column (name = "idEvento")
     private int idEvento;
     
@@ -115,6 +118,14 @@ public class Evento implements Serializable {
      * @return the dtInicio
      */
     public Date getDtInicio() {
+          
+          DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+          try{
+          dtInicio = df.parse(dtInicio.toString());
+          }catch(ParseException e)
+          {
+              System.out.println("ERRO DE CONVERSAO DATA INICIO - EVENTO" + e);
+          }
         return dtInicio;
     }
 

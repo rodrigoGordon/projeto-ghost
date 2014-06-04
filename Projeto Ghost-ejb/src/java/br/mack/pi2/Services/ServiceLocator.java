@@ -73,4 +73,7 @@ public class ServiceLocator {
     public UnidadeAcademicaRemote getUA() throws NamingException {
         return (UnidadeAcademicaRemote) lookup("UADAO");
     }
+    public UsuarioRemote getUsuario() throws NamingException {
+        return (UsuarioRemote) lookup("UsuarioDAO");
+    }
 }

@@ -1,0 +1,19 @@
+ALTER TABLE EVENTO CHANGE idEvento idEvento integer not null auto_increment; 
+
+insert into Unidade_Academica(id_UA, nome_UA)values(1,'Faculde de Computação e Informática');
+insert into Unidade_Academica(id_UA, nome_UA)values(2,'Faculdade de Arquitetura e Urbanismo');
+insert into Unidade_Academica(id_UA, nome_UA)values(3,'Escola de Engenharia');
+insert into Unidade_Academica(id_UA, nome_UA)values(4,'Faculdade de Direito');
+
+insert into permissao(tipo_user, desc_user)values(1,'admin');
+insert into permissao(tipo_user, desc_user)values(2,'moderador');
+insert into permissao(tipo_user, desc_user)values(3,'comum');
+
+insert into Professor(DRT, Unidade_Academica_id_UA,nomeProf, tipo_prof)
+values(1,'1','Dirc','loc');
+
+insert into Aluno(TIA, Unidade_Academica_id_UA,nomeAluno, curso, periodo)
+values(1,1,'Xikinha','Sist', 'noturno');
+
+insert into Usuario(idUser, DRT, TIA, Permissao_tipo_user, nomeUser, email, RG, pass)
+values(1,1,1,1,'Xika','xika.xaxa@xaxa', 45677, 'admin123');

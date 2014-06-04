@@ -15,10 +15,7 @@
 
     <link rel="stylesheet" type="text/css" media="screen" href="css/coolblue.css" />
 
-    <!--[if lt IE 9]>
-	    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
+ 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/jquery-1.6.1.min.js"><\/script>')</script>
 
@@ -40,7 +37,7 @@
     <nav>
 		<ul>
 			<li id="current"><a href="homeGhost.jsp">Home</a><span></span></li>
-			<li><a href="pesquisaEventos.jsp">Eventos</a><span></span></li>
+			<li><a href="CarregaEventosJson">Eventos</a><span></span></li>
 		</ul>
 	</nav>
 
@@ -49,10 +46,8 @@
     </div>
 
    <form id="quick-search" method="post" action="CarregaLocalInfraServlet">
-      <fieldset class="search">
-         <label for="qsearch">Search:</label>
-         <input class="tbox" id="qsearch" type="text" name="qsearch" value="Search..." title="Start typing and hit ENTER" />
-         <button class="btn" title="Submit Search">Search</button>
+      <fieldset>
+         <p><a class="more" href="CarregaLocalInfraServlet">Novo Evento &raquo;</a></p>
       </fieldset>
    </form>
 
@@ -88,7 +83,7 @@
 					
                     </p>
 
-                    <p><a class="more" href="pesquisaEventos.jsp">Detalhes &raquo;</a></p>
+                    <p><a class="more" href="CarregaDetalheEventoGhostServlet">Detalhes &raquo;</a></p>
 
                 </div>
 
