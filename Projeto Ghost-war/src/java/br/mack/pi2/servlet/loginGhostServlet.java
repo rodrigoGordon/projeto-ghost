@@ -54,7 +54,7 @@ public class loginGhostServlet extends HttpServlet {
        }
        }catch(Exception e)
        {
-           System.out.println("ERRO DE LOGIN" + e);
+          System.out.println("ERRO DE LOGIN" + e);
           request.getSession().setAttribute("msgErroEventoLogin", "Ops... algo parece estar errado, já temos uma equipe de ninjas trabalhando nisso. Clique em voltar para tentar novamente.");
           response.sendRedirect("PaginaMensagemGhost.jsp");
            

@@ -62,8 +62,12 @@ public class editaEventoGhostServlet extends HttpServlet {
         oLocal.setIdLocal(Integer.parseInt(request.getParameter("cmbLocalEvento")));
         oEvento.setIdLocal(oLocal);
         
+        List<Usuario> listUsuario = (List<Usuario>)request.getSession().getAttribute("usuario");
+        int idUsuario = listUsuario == null ? 1 : listUsuario.get(0).getIdUser();
+
+
         Usuario oUsuarioResponsavel = new Usuario();
-        oUsuarioResponsavel.setIdUser(1);
+        oUsuarioResponsavel.setIdUser(idUsuario);
         oEvento.setResponsavel(oUsuarioResponsavel);
         
         //Verifica resp sim(0) ou nao(1)

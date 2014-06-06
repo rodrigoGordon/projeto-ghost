@@ -1,4 +1,6 @@
 
+<%@page import="java.util.List"%>
+<%@page import="br.mack.pi2.jpa.Usuario"%>
 <%@ page language="java" contentType="text/html" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
@@ -7,7 +9,7 @@
 <head>
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <meta charset="utf-8"/>
+    
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -73,9 +75,21 @@
 		</ul>
 	</nav>
 
+      <% 
+    List<Usuario> listUsuario = (List<Usuario>)request.getSession().getAttribute("usuario");
+    String nomeUsuario = null;
+    nomeUsuario = listUsuario == null ? null : listUsuario.get(0).getNomeUser();
+  %>
+    <% if(nomeUsuario == null){ %>
     <div class="subscribe">
         <span>USER:</span><a href="loginGhost.jsp"> Login </a> | <a href="registrarUsuarioGhost.jsp"> 	Registrar </a>
     </div>
+   <% }else { %>
+        
+    <div class="subscribe">
+        <span><%= nomeUsuario%></span>
+    </div> 
+   <% }%>
 
 <!--/header-->
 </header>
@@ -154,7 +168,7 @@
       <br />
       </c:when>
 
-      <c:otherwise>VERIFICANDO...
+      <c:otherwise>Faculde de Arquitetura e Urbanismo.
       <br />
       </c:otherwise>
     </c:choose>
@@ -162,11 +176,11 @@
   </tr>
   <tr>
            <td>
-          <a class="more" href="CarregaLocalInfraServlet">Notifique-me</a>&nbsp
-          <a class="more" href="CarregaLocalInfraServlet">Inscreva-se</a>&nbsp
-          <a class="more" href="editarEventoGhostServlet.jsp">Editar Evento</a><br>
+          <!-- <a class="more" href="CarregaLocalInfraServlet">Notifique-me</a>&nbsp -->
+          <!-- <a class="more" href="CarregaLocalInfraServlet">Inscreva-se</a>&nbsp -->
+          <a class="more" href="editarEventoGhostServlet.jsp">Editar Evento</a>
 
-          <a class="more" href="CarregaLocalInfraServlet">Cancelar Inscrição</a>&nbsp
+          <!-- <a class="more" href="CarregaLocalInfraServlet">Cancelar Inscrição</a>&nbsp -->
           <a class="more" href="PaginaMensagemGhost.jsp">Cancelar Evento</a>
            </td>
        

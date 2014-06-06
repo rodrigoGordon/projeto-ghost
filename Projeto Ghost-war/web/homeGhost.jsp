@@ -1,6 +1,9 @@
 
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<%@page import="br.mack.pi2.jpa.Usuario"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html" %>
 <!DOCTYPE html>
  <html> 
 
@@ -40,16 +43,27 @@
 			<li><a href="CarregaEventosJson">Eventos</a><span></span></li>
 		</ul>
 	</nav>
-
+  <% 
+    List<Usuario> listUsuario = (List<Usuario>)request.getSession().getAttribute("usuario");
+    String nomeUsuario = null;
+    nomeUsuario = listUsuario == null ? null : listUsuario.get(0).getNomeUser();
+  %>
+    <% if(nomeUsuario == null){ %>
     <div class="subscribe">
         <span>USER:</span><a href="loginGhost.jsp"> Login </a> | <a href="registrarUsuarioGhost.jsp"> 	Registrar </a>
     </div>
-
-   <form id="quick-search" method="post" action="CarregaLocalInfraServlet">
+   <% }else { %>
+        
+    <div class="subscribe">
+        <span><%= nomeUsuario%></span>
+    </div> 
+    <form id="quick-search" method="post" action="CarregaLocalInfraServlet">
       <fieldset>
          <p><a class="more" href="CarregaLocalInfraServlet">Novo Evento &raquo;</a></p>
       </fieldset>
    </form>
+   <% }%>
+   
 
 <!--/header-->
 </header>
@@ -68,7 +82,7 @@
 
       		    <div class="primary">
 
-                    <h2><a href="pesquisaEventos.jsp">T√çTULO EVENTO</a></h2>
+                    <h2><a href="pesquisaEventos.jsp">TÕTULO EVENTO</a></h2>
 
                     
 
@@ -77,9 +91,9 @@
          	        </div>
 
                     <p>Detalhes do Evento
-					Le Lorem Ipsum est simplement du faux texte employ√© dans la composition et la mise en page avant impression. 
-					Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les ann√©es 1500, quand un peintre anonyme assembla 
-					ensemble des morceaux de texte pour r√©aliser un livre sp√©cimen de polices de texte.
+					Le Lorem Ipsum est simplement du faux texte employÈ dans la composition et la mise en page avant impression. 
+					Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les annÈes 1500, quand un peintre anonyme assembla 
+					ensemble des morceaux de texte pour rÈaliser un livre spÈcimen de polices de texte.
 					
                     </p>
 
@@ -120,7 +134,7 @@
 					
 					<li><a href="http://www.mackenzie.br/editora.html">Revista Mackenzie</a></li>
 					<li><a href="#">Ouvidoria</a></li>
-					<li><a href="http://colegio.mackenzie.br/">Col√©gio Mackenzie</a></li>
+					<li><a href="http://colegio.mackenzie.br/">ColÈgio Mackenzie</a></li>
 					<li><a href="http://www.mackenzie.br/upm.html">Universidade Mackenzie</a></li>
 				</ul>
 

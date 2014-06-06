@@ -1,5 +1,6 @@
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="br.mack.pi2.jpa.Usuario"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html" %>
 
 <!DOCTYPE html>
  <html> 
@@ -59,9 +60,21 @@
 		</ul>
 	</nav>
 
+ <% 
+    List<Usuario> listUsuario = (List<Usuario>)request.getSession().getAttribute("usuario");
+    String nomeUsuario = null;
+    nomeUsuario = listUsuario == null ? null : listUsuario.get(0).getNomeUser();
+  %>
+    <% if(nomeUsuario == null){ %>
     <div class="subscribe">
         <span>USER:</span><a href="loginGhost.jsp"> Login </a> | <a href="registrarUsuarioGhost.jsp"> 	Registrar </a>
     </div>
+   <% }else { %>
+        
+    <div class="subscribe">
+        <span><%= nomeUsuario%></span>
+    </div> 
+   <% }%>
 
 <!--/header-->
 </header>
@@ -83,14 +96,14 @@
                 <!-- primary -->
          	    <div class="primary">
 
-		    <h1>Registrar UsuÃ¡rio</h1>
+		    <h1>Registrar Usuário</h1>
 
             <div class="primary">
 
             	<form action="registrarUsuarioGhostServlet" method="post" id="commentform">
 
                	    <div>
-					    <label for="usuario">Nome do usuÃ¡rio<span>*</span></label>
+					    <label for="usuario">Nome do usuário<span>*</span></label>
 						<input id="usuario" name="nomeUsuario"  type="text" tabindex="1" />
 					</div>
                     <div>
@@ -106,9 +119,9 @@
                                                 <input id="senhaConf" name="senhaConfUsuario"  type="password" tabindex="4" />
 					</div>
                     <div>
-						<label for="bMackenzista">Aluno ou funcionÃ¡rio Mackenzista?<span>*</span></label> 
+						<label for="bMackenzista">Aluno ou funcionário Mackenzista?<span>*</span></label> 
                                                 <input type="radio" onclick="javascript:alunoFuncCheck();" name="bMackenzista" id="aCheck" value="A" tabindex="5">Aluno</input>
-                                                <input type="radio" onclick="javascript:alunoFuncCheck();" name="bMackenzista" id="fCheck" value="F" tabindex="6">FuncionÃ¡rio
+                                                <input type="radio" onclick="javascript:alunoFuncCheck();" name="bMackenzista" id="fCheck" value="F" tabindex="6">Funcionário
 					</div>
 					<div>
 						<label for="rg">RG:<span>*</span></label>
@@ -127,7 +140,7 @@
 						<input id="curso" name="curso"  type="text" tabindex="10" />
 					</div>
                                         <div id="aPeriodo" style="display:none">
-						<label for="periodo">PerÃ­odo:<span>*</span></label>
+						<label for="periodo">Período:<span>*</span></label>
 						<input id="periodo" name="periodo"  type="text" tabindex="11" />
 					</div>
                                         <div id="fTipo" style="display:none">

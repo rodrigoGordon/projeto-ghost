@@ -1,5 +1,7 @@
 
 
+<%@page import="br.mack.pi2.jpa.Usuario"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html" %>
 
 <!DOCTYPE html>
@@ -54,9 +56,21 @@
 		</ul>
 	</nav>
 
+     <% 
+    List<Usuario> listUsuario = (List<Usuario>)request.getSession().getAttribute("usuario");
+    String nomeUsuario = null;
+    nomeUsuario = listUsuario == null ? null : listUsuario.get(0).getNomeUser();
+  %>
+    <% if(nomeUsuario == null){ %>
     <div class="subscribe">
         <span>USER:</span><a href="loginGhost.jsp"> Login </a> | <a href="registrarUsuarioGhost.jsp"> 	Registrar </a>
     </div>
+   <% }else { %>
+        
+    <div class="subscribe">
+        <span><%= nomeUsuario%></span>
+    </div> 
+   <% }%>
  
 <!--/header-->
 </header>

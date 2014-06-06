@@ -1,3 +1,4 @@
+<%@page import="br.mack.pi2.jpa.Usuario"%>
 <%@page import="java.util.List"%>
 <%@page import="br.mack.pi2.jpa.Locais"%>
 <%@ page language="java" contentType="text/html" %>
@@ -373,9 +374,18 @@
 
                                                 </span> 
                                             </li>		<li id="li_8" >
+                                                
+                                                
+                                                <%
+                                                    List<Usuario> listUsuario = (List<Usuario>) request.getSession().getAttribute("usuario");
+                                                    String nomeUsuario = null;
+                                                    nomeUsuario = listUsuario == null ? null : listUsuario.get(0).getNomeUser();
+                                                %>
+    
+
                                                 <label class="description" for="responsavelEvento">Responsável </label>
                                                 <div>
-                                                    <input id="element_8" name="responsavelEvento" class="element text small" type="text" maxlength="255" value=""/> 
+                                                    <input id="element_8" name="responsavelEvento" class="element text small" type="text" maxlength="255" value=<%= nomeUsuario%>/> 
                                                 </div> 
                                             </li>		<li id="li_12" >
                                                 <label class="description" for="bInscricao">Inscrição </label>
