@@ -43,13 +43,6 @@ public class loginGhostServlet extends HttpServlet {
        List<Usuario> oListUsuario = null;
        try{
        oListUsuario = oUsuarioCRUD.loginUsuario(oUsuario.getNomeUser(),oUsuario.getPass());
-       }catch(Exception e)
-       {
-           System.out.println("ERRO DE LOGIN" + e);
-          request.getSession().setAttribute("msgErroEventoLogin", "Ops... algo parece estar errado, já temos uma equipe de ninjas trabalhando nisso. Clique em voltar para tentar novamente.");
-          response.sendRedirect("PaginaMensagemGhost.jsp");
-           
-       }
        if(oListUsuario.size() > 0){
        request.getSession().setAttribute("usuario", oListUsuario);
        
@@ -59,6 +52,14 @@ public class loginGhostServlet extends HttpServlet {
        request.getSession().setAttribute("erroLoginMsg", "Login e/ou senha inválidos.");
        response.sendRedirect("loginGhost.jsp");  
        }
+       }catch(Exception e)
+       {
+           System.out.println("ERRO DE LOGIN" + e);
+          request.getSession().setAttribute("msgErroEventoLogin", "Ops... algo parece estar errado, já temos uma equipe de ninjas trabalhando nisso. Clique em voltar para tentar novamente.");
+          response.sendRedirect("PaginaMensagemGhost.jsp");
+           
+       }
+       
        
     }
 

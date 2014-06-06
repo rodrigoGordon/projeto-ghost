@@ -52,7 +52,8 @@
     <!-- content -->
     <div id="content" class="clearfix">
 <div id="main">
-    <p><% %></p> 
+    <p>Ops... algo parece estar errado, já temos uma equipe de ninjas trabalhando nisso. Clique em voltar para tentar novamente.</p> 
+   <a class="more" href="homeGhost.jsp">&laquo; Voltar</a>
 </div>
 <!-- sidebar -->
 		<div id="sidebar">
