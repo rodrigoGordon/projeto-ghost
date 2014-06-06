@@ -20,7 +20,7 @@ import javax.persistence.*;
 public class Restricao_evento implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column (name = "idRestricao_Evento")
     private int idRestricaoEvento;
 

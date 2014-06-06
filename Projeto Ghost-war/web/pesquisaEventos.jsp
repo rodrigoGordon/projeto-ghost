@@ -30,6 +30,7 @@
 
       <!--  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script> -->
         <script>window.jQuery || document.write('<script src="js/jquery-1.6.1.min.js"><\/script>')</script>
+        <script src="js/jquery.eventCalendar.js" type="text/javascript"></script>
         
     <script src="js/scrollToTop.js"></script>
 
@@ -94,7 +95,9 @@
                                                     txt_next: "Próximo",
                                                     txt_prev: "Anterior",
                                                     txt_NextEvents: "Próximos eventos:",
-                                                    txt_GoToEventUrl: "Detalhes do evento"
+                                                    txt_GoToEventUrl: "Detalhes do evento",
+                                                    openEventInNewWindow: false
+                                                    
                                             });
                                     });
                             </script>
@@ -173,6 +176,6 @@
 </footer>
 
 </body>
-<script src="js/jquery.eventCalendar.js" type="text/javascript"></script>
+
 </html>
 

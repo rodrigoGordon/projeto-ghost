@@ -9,7 +9,6 @@ package br.mack.pi2.ejb;
 import br.mack.pi2.Services.ConectorDAO;
 import br.mack.pi2.ejb.interfaces.UsuarioRemote;
 import br.mack.pi2.jpa.Usuario;
-import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -66,10 +65,13 @@ public class UsuarioBean implements UsuarioRemote {
     }
 
     @Override
-    public ArrayList<Usuario> loginUsuario(String login, String senha) {
-       String query = "select * from tblUsuario u where u.nomeUser='"+login+"' and u.pass='"+senha+"'";
+    public List<Usuario> loginUsuario(String login, String senha) {
+        //SELECT e FROM Evento e JOIN e.idLocal a
+        //String query = "select u from Usuario u JOIN u.tipo_user JOIN u.aluno JOIN u.professor where u.nomeUser like '"+login+"' and u.pass like '"+senha+"'";
+         String query = "select u from Usuario u  where u.nomeUser like '"+login+"' and u.pass like '"+senha+"'";
         Query q = em.createQuery(query);
-        ArrayList<Usuario> listUsuario = (ArrayList<Usuario>)q.getResultList();
+        List<Usuario> listUsuario = (List<Usuario>)q.getResultList();
+        //listUsuario.get(0).setPass(" ");
         return listUsuario;  
     }
 }

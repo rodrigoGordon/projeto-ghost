@@ -32,7 +32,7 @@ public class Usuario implements Serializable {
     @Column (name = "rg")
     private int rg;
     @Column (name = "pass", length = 16)
-    private int pass; //valor binario: colocar 0b no numero
+    private String pass; //valor binario: colocar 0b no numero
     
     @ManyToOne (fetch = FetchType.LAZY,targetEntity = Permissao.class)
     @JoinColumn (name="Permissao_tipo_user")
@@ -124,14 +124,14 @@ public class Usuario implements Serializable {
     /**
      * @return the pass
      */
-    public int getPass() {
+    public String getPass() {
         return pass;
     }
 
     /**
      * @param pass the pass to set
      */
-    public void setPass(int pass) {
+    public void setPass(String pass) {
         this.pass = pass;
     }
 

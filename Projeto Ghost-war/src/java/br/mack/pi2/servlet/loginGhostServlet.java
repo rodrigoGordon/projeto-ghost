@@ -4,10 +4,10 @@
  */
 package br.mack.pi2.servlet;
 
-import br.mack.pi2.ejb.interfaces.AlunoRemote;
+import br.mack.pi2.ejb.interfaces.UsuarioRemote;
 import br.mack.pi2.jpa.Usuario;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
@@ -32,26 +32,34 @@ public class loginGhostServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-     @EJB AlunoRemote oUsuarioCRUD;
+     @EJB UsuarioRemote oUsuarioCRUD;
     Usuario oUsuario;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Exception {
        oUsuario  = new Usuario();
-       String pagina = "/pesquisaEventos.jsp";
+       //String pagina = "/pesquisaEventos.jsp";
        oUsuario.setNomeUser(request.getParameter("nomeUsuario"));
-       oUsuario.setPass(Integer.parseInt(request.getParameter("senhaUsuario")));
+       oUsuario.setPass((request.getParameter("senhaUsuario")));
+       List<Usuario> oListUsuario = null;
+       try{
+       oListUsuario = oUsuarioCRUD.loginUsuario(oUsuario.getNomeUser(),oUsuario.getPass());
+       }catch(Exception e)
+       {
+           System.out.println("ERRO DE LOGIN" + e);
+          request.getSession().setAttribute("msgErroEventoLogin", "Ops... algo parece estar errado, já temos uma equipe de ninjas trabalhando nisso. Clique em voltar para tentar novamente.");
+          response.sendRedirect("PaginaMensagemGhost.jsp");
+           
+       }
+       if(oListUsuario.size() > 0){
+       request.getSession().setAttribute("usuario", oListUsuario);
        
-       /*
-       if(oUsuarioCRUD.loginUsuario(oUsuario.getNomeUser(),oUsuario.getPass())){
-       request.setAttribute("usuario", oUsuario);
-       request.setAttribute("bInscricao", "ok");
-       request.getRequestDispatcher(pagina).forward(request, response);
+       response.sendRedirect("homeGhost.jsp");
        }else
        {
-       request.setAttribute("bInscricao", "nok");
-       request.getRequestDispatcher(pagina).forward(request, response);  
+       request.getSession().setAttribute("erroLoginMsg", "Login e/ou senha inválidos.");
+       response.sendRedirect("loginGhost.jsp");  
        }
-       */
+       
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

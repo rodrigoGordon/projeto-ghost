@@ -7,9 +7,6 @@
 package br.mack.pi2.jpa;
 
 import java.io.Serializable;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.persistence.*;
 
@@ -23,9 +20,14 @@ import javax.persistence.*;
     @NamedQuery(name = "Evento.getAll", query = "SELECT a FROM Evento a")})
 public class Evento implements Serializable {
     private static final long serialVersionUID = 1L;
+
+   
+
+  
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column (name = "idEvento")
+    
     private int idEvento;
     
     @Column (name = "nomeEvento", length = 100)
@@ -33,10 +35,10 @@ public class Evento implements Serializable {
     @Column (name = "descEvento", length = 255)
     private String descEvento;
     @Column (name = "dt_inicio")
-    @Temporal(javax.persistence.TemporalType.DATE)
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date dtInicio;
     @Column (name = "dt_fim")
-    @Temporal(javax.persistence.TemporalType.DATE)
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date dtFim;
     @Column (name = "isItemAdd")
     private boolean itemAdd;
@@ -52,6 +54,19 @@ public class Evento implements Serializable {
     @ManyToOne (fetch = FetchType.LAZY,targetEntity = Usuario.class)
     @JoinColumn(name="Usuario_idUser")
     private Usuario responsavel;
+    
+    private static int lastIdGen = 0;
+    
+   
+    public static synchronized void setLastIdGen(int iId)
+    {
+            lastIdGen = iId;  
+    }
+    
+    public static synchronized int getLastIdGen()
+    {
+         return lastIdGen;  
+    }
     
     public int getIdEvento() {
         return idEvento;
@@ -118,17 +133,9 @@ public class Evento implements Serializable {
      * @return the dtInicio
      */
     public Date getDtInicio() {
-          
-          DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-          try{
-          dtInicio = df.parse(dtInicio.toString());
-          }catch(ParseException e)
-          {
-              System.out.println("ERRO DE CONVERSAO DATA INICIO - EVENTO" + e);
-          }
         return dtInicio;
     }
-
+   
     /**
      * @param dtInicio the dtInicio to set
      */

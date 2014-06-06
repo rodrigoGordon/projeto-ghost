@@ -22,5 +22,5 @@ public interface UsuarioRemote {
     public boolean deletaUsuario(Usuario user);
     public Usuario getUsuario(int id);
     public List<Usuario> getAllUsuario();
-    public ArrayList<Usuario> loginUsuario(String login, String senha);
+    public List<Usuario> loginUsuario(String login, String senha);
 }

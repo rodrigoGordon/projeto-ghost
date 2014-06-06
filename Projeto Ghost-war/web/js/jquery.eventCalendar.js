@@ -74,9 +74,13 @@
 			if (!desc.find('a').size()) {
 				var eventUrl = $(this).attr('href');
 				var eventTarget = $(this).attr('target');
-
+                               
+                                var eventUrlT = "http://localhost:8080/Projeto_Ghost-war/";
+				var eventTargetT = ""; 
+                               var textoT = "DETALHE EVENTO TESTE"; 
 				// create a button to go to event url
-				desc.append('<a href="' + eventUrl + '" target="'+eventTarget+'" class="bt">'+eventsOpts.txt_GoToEventUrl+'</a>')
+				//desc.append('<a href="' + eventUrl + '" target="'+eventTarget+'" class="bt">'+eventsOpts.txt_GoToEventUrl+'</a>')
+                                desc.append('<a href="' + eventUrlT + eventUrl + '" target="'+eventTargetT+'" class="bt">'+eventsOpts.txt_GoToEventUrl+'</a>');
 			}
 
 			if (desc.is(':visible')) {

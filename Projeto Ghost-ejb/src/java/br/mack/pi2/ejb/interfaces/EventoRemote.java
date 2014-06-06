@@ -20,4 +20,5 @@ public interface EventoRemote {
     public Evento getEvento(int id);
     public List<Evento> getAllEvento();
     public List<Evento> getDetalhesEvento(int idEvento);
+    public boolean verificaDataEvento(Evento evento);
 }

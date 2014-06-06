@@ -235,7 +235,7 @@
 			text-decoration:none;
 		}
 			.eventsCalendar-list li a.eventTitle {
-				color:#0E8EAB;
+				color:#F00;
 			}
 			.eventsCalendar-list li a.eventTitle:hover { text-decoration:underline;}
 		.eventsCalendar-list li .eventDesc {

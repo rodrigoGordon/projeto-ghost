@@ -86,21 +86,21 @@
     <div id="content" class="clearfix">
 <div id="main">
        <c:forEach var="evento" items="${eventoDetalhe}">      
-      <!--  ${local.nomeLocal} -->
+      
 
       <div><table><tr><th>Título</th></tr><tr><td>${evento.nomeEvento}</td></tr></table></div>
     <div>
 <table >
   <tr>
-    <th>Data&nbsp; &nbsp; &nbsp;</th>
-    <th>Hora&nbsp; &nbsp; &nbsp;</th>
+    <th>Data&nbsp; - Hora&nbsp;</th>
+    
     <th>Local&nbsp; &nbsp; &nbsp;</th>
     <th>Capacidade&nbsp; &nbsp; &nbsp;</th>
     <th>Inscritos até o Momento&nbsp; &nbsp; &nbsp;</th>
   </tr>
   <tr>
     <td>${evento.dtInicio}</td>
-    <td>10h</td>
+    
     <td>${evento.idLocal.nomeLocal}</td>
     <td>${evento.idLocal.capacidade}</td>
     <td>10</td>
@@ -149,17 +149,25 @@
   </tr>
   <tr>
     <td>
-        Todos. 
+        <c:choose>
+      <c:when test="${not evento.privado}">Todos.
+      <br />
+      </c:when>
+
+      <c:otherwise>VERIFICANDO...
+      <br />
+      </c:otherwise>
+    </c:choose>
     </td>    
   </tr>
   <tr>
            <td>
           <a class="more" href="CarregaLocalInfraServlet">Notifique-me</a>&nbsp
           <a class="more" href="CarregaLocalInfraServlet">Inscreva-se</a>&nbsp
-          <a class="more" href="CarregaDetalheEventoGhostServlet">Editar Evento</a><br>
+          <a class="more" href="editarEventoGhostServlet.jsp">Editar Evento</a><br>
 
           <a class="more" href="CarregaLocalInfraServlet">Cancelar Inscrição</a>&nbsp
-          <a class="more" href="CarregaLocalInfraServlet">Cancelar Evento</a>
+          <a class="more" href="PaginaMensagemGhost.jsp">Cancelar Evento</a>
            </td>
        
   </tr>

@@ -44,6 +44,10 @@
         <servlet-name>CarregaDetalheEventoGhostServlet</servlet-name>
         <servlet-class>br.mack.pi2.servlet.CarregaDetalheEventoGhostServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>editaEventoGhostServlet</servlet-name>
+        <servlet-class>br.mack.pi2.servlet.editaEventoGhostServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AlunoTest</servlet-name>
         <url-pattern>/AlunoTest</url-pattern>
@@ -87,6 +91,10 @@
     <servlet-mapping>
         <servlet-name>CarregaDetalheEventoGhostServlet</servlet-name>
         <url-pattern>/CarregaDetalheEventoGhostServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>editaEventoGhostServlet</servlet-name>
+        <url-pattern>/editaEventoGhostServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

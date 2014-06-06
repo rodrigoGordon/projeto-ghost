@@ -9,7 +9,6 @@
             <title>Criar Evento</title>
             <!-- <link rel="stylesheet" type="text/css" media="screen" href="css/coolblue.css" /> -->
             <link rel="stylesheet" type="text/css" href="css/view.css" media="all">
-                <link rel="stylesheet" href="css/eventCalendar_theme_responsive.css">
                 <script type="text/javascript" src="js/view.js"></script>
                 <script type="text/javascript" src="js/calendar.js"></script>
 
@@ -126,7 +125,8 @@
                                         <div class="form_description">
                                             <h2>Criar Evento</h2>
  
-                                        </div>	
+                                        </div>
+                                         <c:forEach var="evento" items="${eventoDetalhe}">  
                                          <% String msgErro  = (String)request.getSession().getAttribute("erroConcorrencia") ; if(msgErro == null)msgErro = " "; %>
                                                 <p><a><%= msgErro %></a></p>
                                         <ul >
@@ -134,13 +134,13 @@
                                             <li id="li_1" >
                                                 <label class="description" for="nomeEvento">Título do Evento </label>
                                                 <div>
-                                                    <input id="element_1" name="nomeEvento" class="element text medium" type="text" maxlength="255" value=""/> 
+                                                    <input id="element_1" name="nomeEvento" class="element text medium" type="text" maxlength="255" value=${evento.nomeEvento}/> 
                                                 </div> 
                                             </li>		
                                             <li id="li_2" >
                                                 <label class="description" for="descEvento">Descrição do Evento </label>
                                                 <div>
-                                                    <input id="element_1" name="descEvento" class="element text medium" type="text" maxlength="255" value=""/> 
+                                                    <input id="element_1" name="descEvento" class="element text medium" type="text" maxlength="255" value=${evento.descEvento}/> 
                                                 </div> 
                                             </li>   
                                             <li id="li_3" >
@@ -416,12 +416,13 @@
                                             <li class="buttons">
                                                 <input type="hidden" name="form_id" value="831351" />
 
-                                             <a class="more" href="CarregaEventosJson">&laquo; Voltar</a>
-                                               <!-- <p><a class="more" href="cadastroEventoGhostServlet">Salvar &raquo;</a></p> -->
-                                                <input id="saveForm" class="bt" type="submit" name="submit" value="Salvar &raquo;" />
+                                                <p><a class="more" href="CarregaEventosJson">&laquo; Voltar</a></p>
+                                                <p><a class="more" href="editaEventoGhostServlet">Salvar &raquo;</a></p>
+                                                <input id="saveForm" class="button_text" type="submit" name="submit" value="Salvar &raquo;" />
                                                
                                             </li>
                                         </ul>
+                                        </c:forEach>
                                     </form>	
                                     <div id="footer">
                                         Ghost
@@ -430,3 +431,4 @@
                                 <img id="bottom" src="images/bottom.png" alt="">
                                     </body>
                                     </html>
+

@@ -23,6 +23,21 @@
     <script>window.jQuery || document.write('<script src="js/jquery-1.6.1.min.js"><\/script>')</script>
 
     <script src="js/scrollToTop.js"></script>
+    
+    <script type="text/javascript">
+
+    function alunoFuncCheck() {
+    if (document.getElementById('aCheck').checked) {
+        document.getElementById('aCurso').style.display = 'block';
+        document.getElementById('aPeriodo').style.display = 'block';
+        document.getElementById('fTipo').style.display = 'none';
+    } else {
+        document.getElementById('aCurso').style.display = 'none';
+        document.getElementById('aPeriodo').style.display = 'none';
+        document.getElementById('fTipo').style.display = 'block';
+    }
+    }
+    </script>
 
 </head>
 
@@ -84,16 +99,16 @@
 					</div>
                     <div>
 						<label for="senha">Senha:<span>*</span></label>
-						<input id="senha" name="senhaUsuario"  type="text" tabindex="3" />
+                                                <input id="senha" name="senhaUsuario"  type="password" tabindex="3" />
 					</div>
 					<div>
 						<label for="senha">Confirmar Senha:<span>*</span></label>
-						<input id="senhaConf" name="senhaConfUsuario"  type="text" tabindex="4" />
+                                                <input id="senhaConf" name="senhaConfUsuario"  type="password" tabindex="4" />
 					</div>
                     <div>
 						<label for="bMackenzista">Aluno ou funcionário Mackenzista?<span>*</span></label> 
-						<input type="radio" name="bMackenzista" value="Sim" tabindex="5">Sim</input>
-                        <input type="radio" name="bMackenzista" value="Não" tabindex="6">Não
+                                                <input type="radio" onclick="javascript:alunoFuncCheck();" name="bMackenzista" id="aCheck" value="A" tabindex="5">Aluno</input>
+                                                <input type="radio" onclick="javascript:alunoFuncCheck();" name="bMackenzista" id="fCheck" value="F" tabindex="6">Funcionário
 					</div>
 					<div>
 						<label for="rg">RG:<span>*</span></label>
@@ -103,8 +118,24 @@
 						<label for="identMackenzista">TIA/DRT:<span>*</span></label>
 						<input id="identMackenzista" name="identMackenzista"  type="text" tabindex="8" />
 					</div>
+                                        <div>
+						<label for="ua">Unidade Academica:<span>*</span></label>
+						<input id="ua" name="ua"  type="text" tabindex="9" />
+					</div>
+                                        <div id="aCurso" style="display:none">
+						<label for="curso">Curso:<span>*</span></label>
+						<input id="curso" name="curso"  type="text" tabindex="10" />
+					</div>
+                                        <div id="aPeriodo" style="display:none">
+						<label for="periodo">Período:<span>*</span></label>
+						<input id="periodo" name="periodo"  type="text" tabindex="11" />
+					</div>
+                                        <div id="fTipo" style="display:none">
+						<label for="tipo">Tipo:<span>*</span></label>
+						<input id="tipo" name="tipo"  type="text" tabindex="12" />
+					</div>
                     <div class="no-border">
-                        <input class="button" type="submit" name="actionB" value="Registrar" tabindex="9" />
+                        <input class="button" type="submit" name="actionB" value="Registrar" tabindex="13" />
 					</div>
 
                </form>

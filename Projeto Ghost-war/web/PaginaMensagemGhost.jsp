@@ -1,6 +1,5 @@
-
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
  <html> 
 
@@ -20,7 +19,7 @@
     <script>window.jQuery || document.write('<script src="js/jquery-1.6.1.min.js"><\/script>')</script>
 
     <script src="js/scrollToTop.js"></script>
-
+  
 </head>
 
 <body id="top">
@@ -45,70 +44,17 @@
         <span>USER:</span><a href="loginGhost.jsp"> Login </a> | <a href="registrarUsuarioGhost.jsp"> 	Registrar </a>
     </div>
 
-   <form id="quick-search" method="post" action="CarregaLocalInfraServlet">
-      <fieldset>
-         <p><a class="more" href="CarregaLocalInfraServlet">Novo Evento &raquo;</a></p>
-      </fieldset>
-   </form>
-
 <!--/header-->
 </header>
 </div>
-	
-<!-- content-wrap -->
 <div id="content-wrap">
 
     <!-- content -->
     <div id="content" class="clearfix">
-
-   	    <!-- main -->
-        <div id="main">
-
-      	    <article class="post">
-
-      		    <div class="primary">
-
-                    <h2><a href="pesquisaEventos.jsp">TÍTULO EVENTO</a></h2>
-
-                    
-
-               	    <div class="image-section">
-              		    <img src="images/img-post.jpg" alt="image post" height="206" width="498"/>
-         	        </div>
-
-                    <p>Detalhes do Evento
-					Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. 
-					Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un peintre anonyme assembla 
-					ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte.
-					
-                    </p>
-
-                    <p><a class="more" href="CarregaDetalheEventoGhostServlet?id=10">Detalhes &raquo;</a></p>
-
-                </div>
-
-                <aside>
-
-            	    <p class="dateinfo">JAN<span>31</span></p>
-
-               	    <div class="post-meta">
-                  	    <h4>EVENTO Info</h4>
-                     	<ul>
-                           <li class="comment"><a href="#">Titulo do evento</a></li>
-                           <li class="time"><a href="#">12:30 PM</a></li>
-                           <li class="user"><a href="#">FACULDADE</a></li>
-                           <li class="permalink"><a href="#">LOCAL</a></li>
-                        </ul>
-					</div>
-
-                </aside>
-
-		    </article>
-
-        <!-- /main -->
-        </div>
-
-        <!-- sidebar -->
+<div id="main">
+    <p><% %></p> 
+</div>
+<!-- sidebar -->
 		<div id="sidebar">
 
 			<div class="sidemenu">
@@ -120,7 +66,7 @@
 					
 					<li><a href="http://www.mackenzie.br/editora.html">Revista Mackenzie</a></li>
 					<li><a href="#">Ouvidoria</a></li>
-					<li><a href="http://colegio.mackenzie.br/">Colégio Mackenzie</a></li>
+					<li><a href="http://colegio.mackenzie.br/">Col�gio Mackenzie</a></li>
 					<li><a href="http://www.mackenzie.br/upm.html">Universidade Mackenzie</a></li>
 				</ul>
 
@@ -153,16 +99,11 @@
         <!-- /sidebar -->
 		</div>
 
-    <!-- content -->
-	</div>
 
-<!-- /content-out -->
+    </div>
 </div>
-		
-<!-- extra -->
-<div id="extra-wrap"><div id="extra" class="clearfix">
 
-	    
+<div id="extra-wrap"><div id="extra" class="clearfix">
 
 	    <div class="col first">
 
@@ -201,3 +142,4 @@
 
 </body>
 </html>
+

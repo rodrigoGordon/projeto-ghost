@@ -25,12 +25,24 @@ import javax.servlet.http.HttpServletResponse;
 public class CarregaDetalheEventoGhostServlet extends HttpServlet {
 
     @EJB EventoRemote oEventoCRUD;
-    
+    int idEventoParam = 0;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-      request.getSession().setAttribute("eventoDetalhe", oEventoCRUD.getDetalhesEvento(2));
+      try{  
+      idEventoParam = Integer.parseInt(request.getParameter("id"));
+      }catch(NumberFormatException e){
+          System.out.println("ERRO DE CONVERESAO" + e);
+      }
+      if(idEventoParam > 0){
+      request.getSession().setAttribute("eventoDetalhe", oEventoCRUD.getDetalhesEvento(idEventoParam));
       response.sendRedirect("detalhesEventoGhost.jsp");
+      }
+      else
+      {
+          // colocar send redirect para pagina msg
+          request.getSession().setAttribute("msgErroEventoDetalhe", "Ops... algo parece estar errado, já temos uma equipe de ninjas trabalhando nisso. Clique em voltar para tentar novamente.");
+          response.sendRedirect("PaginaMensagemGhost.jsp");
+      }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

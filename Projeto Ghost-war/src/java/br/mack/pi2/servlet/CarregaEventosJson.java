@@ -59,7 +59,7 @@ public class CarregaEventosJson extends HttpServlet {
                 json.put("title", oEventoItem.getNomeEvento());
                 json.put("description", oEventoItem.getDescEvento());
                 testeDT = String.valueOf(oEventoItem.getIdEvento()) ;
-                json.put("id", "CarregaEventoServlet?"+testeDT);
+                json.put("url", "CarregaDetalheEventoGhostServlet?id="+testeDT);
 
                 try {
 
